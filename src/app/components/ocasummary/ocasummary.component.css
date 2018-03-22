@@ -1,0 +1,41 @@
+.nav-link.pointer {
+  cursor:pointer;
+}
+.tab-pane {
+
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0px 0px 5px 5px;
+  padding: 10px;
+}
+
+.bordered-tab-contents > .tab-content > .tab-pane {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0px 0px 5px 5px;
+  padding: 10px;
+}
+
+.bordered-tab-contents > .nav-tabs {
+  margin-bottom: 0;
+}
+.card-header > h4 {
+  cursor:pointer;
+}
+
+#roundedCard {
+  max-width: 90rem;
+  border-radius:35px;
+}
+#checkStyle {
+  position:absolute;
+  left:93%;
+  font-size:30px;
+  color:lightblue;
+
+}
+.btn-round{
+  border-radius: 20px;
+}

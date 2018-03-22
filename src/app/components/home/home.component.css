@@ -1,8 +1,5 @@
-.btn-round-lg{
-  border-radius: 22.5px;
-}
 .btn-round{
-  border-radius: 17px;
+  border-radius: 20px;
 }
 .btn-round-sm{
   border-radius: 15px;
@@ -12,8 +9,4 @@
   padding-left: 10px;
   padding-right: 10px;
 }
-.col-6.right{
-  position:absolute;
-  right:0px;
 
-}

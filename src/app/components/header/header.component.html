@@ -1,7 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand animated bounceInRight mr-auto" href="#"><h3>Java Certification Training</h3></a>
+<nav class="navbar navbar-expand-lg bg-light">
+  <a class="navbar-brand animated bounceInRight mr-auto" routerLink="/home"><h3>Java Certification Training</h3></a>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <i class="fa fa-lg fa-bars" style="color: #007BFF;"></i>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav animated bounceInLeft ml-auto">
@@ -9,11 +10,14 @@
         <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Study Tips</a>
+        <a class="nav-link" routerLink="/tips">Study Tips</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Exam objectives</a>
+      <a class="nav-link" routerLink="/oca">OCA Review</a>
+    </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/ocp">OCP Review</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link">Login</a>
+        <a class="nav-link" routerLink="/login">Login</a>
       </li>
