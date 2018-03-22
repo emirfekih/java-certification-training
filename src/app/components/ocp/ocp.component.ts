@@ -39,12 +39,14 @@ export class OcpComponent implements OnInit {
   toggleChevron(chapter:Chapter){
     chapter.chevron=!chapter.chevron;
   }
-  next(){
-    this.viewChapters=this.chapters.slice(5,10);
-    this.actualPage=false;
-  }
-  previous(){
-    this.viewChapters=this.chapters.slice(0,5);
-    this.actualPage=true;
+  pagination(){
+    if (this.actualPage==true){this.viewChapters=this.chapters.slice(5,10);
+      this.actualPage=false;}
+      else{
+      this.viewChapters=this.chapters.slice(0,5);
+      this.actualPage=true;
+
+    }
+
   }
 }
