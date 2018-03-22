@@ -7,8 +7,9 @@ import {Chapter} from "../../model/Chapter";
   styleUrls: ['./ocp.component.css']
 })
 export class OcpComponent implements OnInit {
-
+  viewChapters:Chapter[];
   chapters:Chapter[];
+  actualPage:Boolean;
   constructor() { }
 
   ngOnInit() {
@@ -22,6 +23,13 @@ export class OcpComponent implements OnInit {
       {id:8,title: "IO",passed: false,chevron:false},
       {id:9,title: "NIO2",passed: false,chevron:false},
       {id:10,title: "JDBC",passed: false,chevron:false}];
+
+
+    //for pagination
+    this.viewChapters=this.chapters.slice(0,5);
+
+    //for disabling the previous/next button
+    this.actualPage=true;
   }
 
   pass(chapter:Chapter){
@@ -31,5 +39,12 @@ export class OcpComponent implements OnInit {
   toggleChevron(chapter:Chapter){
     chapter.chevron=!chapter.chevron;
   }
-
+  next(){
+    this.viewChapters=this.chapters.slice(5,10);
+    this.actualPage=false;
+  }
+  previous(){
+    this.viewChapters=this.chapters.slice(0,5);
+    this.actualPage=true;
+  }
 }

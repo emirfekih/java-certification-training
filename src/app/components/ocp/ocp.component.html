@@ -8,7 +8,7 @@
   </p>
 </div>
 
-<div *ngFor="let chapter of chapters" [attr.id]="'accordion'+chapter.id" role="tablist" aria-multiselectable="true" >
+<div *ngFor="let chapter of viewChapters" [attr.id]="'accordion'+chapter.id" role="tablist" aria-multiselectable="true" >
   <div id ="roundedCard" class="card bg-light mb-3">
     <div class="card-header" role="tab" data-toggle="collapse" [attr.data-parent]="'#accordion'+chapter.id" [attr.data-target]="'#collapse'+chapter.id" aria-expanded="true" aria-controls="collapseOne" role="tab"  >
       <h4 class="text-primary" (click)="toggleChevron(chapter)" ><i [ngClass]="chapter.chevron ? 'fa fa-chevron-down':'fa fa-chevron-right'"></i><a> Chapter {{chapter.id}} : {{chapter.title}}</a><i id="checkStyle" class="fa fa-check" aria-hidden="true"  [style.color] = "chapter.passed ? '#007BFF' : 'lightblue'" ></i></h4>
@@ -127,7 +127,16 @@
 
 
 </div>
-
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li [ngClass]="actualPage ? 'page-item disabled' : 'page-item' ">
+      <a class="page-link" (click)="previous()" >Previous</a>
+    </li>
+    <li [ngClass]="actualPage ? 'page-item' : 'page-item disabled' ">
+      <a class="page-link" (click)="next()">Next</a>
+    </li>
+  </ul>
+</nav>
 
 
 
