@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import  { Chapter } from '../../model/chapter';
+import {ChapterService} from "../../service/chapter.service";
 @Component({
   selector: 'app-ocasummary',
   templateUrl: './ocasummary.component.html',
@@ -7,21 +8,19 @@ import  { Chapter } from '../../model/chapter';
 })
 export class OcasummaryComponent implements OnInit {
 
-  chapters: Chapter[];
+  chapters:any;
 
 
 
 
-  constructor() { }
+  constructor(private chapterService:ChapterService) { }
 
   ngOnInit() {
-    this.chapters=[{ id:1,title: "Java Building Blocks",passed: false,chevron:false},
-      {id:2,title:"Java Operators & Assignments",passed:false,chevron:false},
-      {id:3,title:"Core Java APIs",passed:false,chevron:false},
-      {id:4,title:"Methods & Encapsulation",passed:false,chevron:false},
-      {id:5,title:"Class Design",passed:false,chevron:false},
-      {id:6,title:"Exceptions",passed:false,chevron:false},];
+
+    this.getChapters();
   }
+
+  getChapters(){this.chapterService.getChapters("assets/oca.json").subscribe(data => this.chapters=data)}
 
   pass(chapter:Chapter){
     chapter.passed=!chapter.passed;
