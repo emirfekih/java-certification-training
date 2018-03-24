@@ -7,8 +7,8 @@ import {Chapter} from "../../model/Chapter";
   styleUrls: ['./ocp.component.css']
 })
 export class OcpComponent implements OnInit {
-  viewChapters:Chapter[];
-  chapters:Chapter[];
+  viewChapters:any;
+  chapters:any;
   actualPage:Boolean;
   constructor() { }
 

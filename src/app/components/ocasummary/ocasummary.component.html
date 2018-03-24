@@ -18,13 +18,13 @@
       <div class="card-body">
         <div class="card-title"><div class="bordered-tab-contents">
           <ul class="nav nav-tabs" role="tablist">
-            <li class="nav-item">
+            <li class="nav-item text-primary">
               <a class="nav-link pointer active show" data-toggle="tab" [attr.data-target]="'#covered'+chapter.id"><h5>Covered in this chapter</h5></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item text-primary">
               <a class="nav-link pointer" data-toggle="tab" [attr.data-target]="'#objectives'+chapter.id"><h5>Objectives</h5></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item text-primary">
               <a class="nav-link pointer" data-toggle="tab" [attr.data-target]="'#summary'+chapter.id"><h5>Summary</h5></a>
             </li>
           </ul></div>
@@ -32,88 +32,21 @@
         <div class="tab-content">
 
           <div class="tab-pane fade active show" [attr.id]="'covered'+chapter.id">
-            <ul><h5>Java Basics</h5>
-              <li>Define the scope of variables</li>
-              <li>Define the structure of a Java class</li>
-              <li>Create executable Java applications with a main method; run
-                a Java program from the command line; including console
-                output</li>
-              <li>Import other Java packages to make them accessible in your
-                code</li>
-              <li>Compare and contrast the features and components of Java
-                such as platform independence, object orientation, encapsulation,
-                etc.</li>
+            <ul *ngFor="let cover of chapter.covered"><h5>{{cover.title}}</h5>
+              <li *ngFor="let c of cover.covers">{{c}}</li>
             </ul>
-            <ul><h5>Working with java data types</h5>
-              <li>Declare and initialize variables (including casting or primitive
-                types)</li>
-              <li>Differentiate between object reference variables and primitive
-                variables</li>
-              <li>Know how to read or write to object fields</li>
-              <li>Import other Java packages to make them accessible in your
-                codeExplain an Object’s Lifecycle (creation, “dereference by
-                reassignment” and garbage collection</li>
-            </ul>
-
           </div>
 
 
           <div class="tab-pane fade" [attr.id]="'objectives'+chapter.id">
-            <ul>
-              <li>Be able to write code using a main() method.</li>
-              <li> Understand the effect of using packages and imports</li>
-              <li>Be able to recognize a constructor	</li>
-              <li>Be able to identify legal and illegal declarations and initialization</li>
-              <li>Be able to determine where variables go into and out of scope.</li>
-              <li>Be able to recognize misplaced statements in a class.</li>
-              <li>Know how to identify when an object is eligible for garbage collection</li>
+            <ul *ngFor="let obj of chapter.objectives">
+              <li>{{obj}}</li>
             </ul>
-
           </div>
 
 
           <div class="tab-pane fade" [attr.id]="'summary'+chapter.id">
-            <p>In this chapter, you saw that Java classes consist of members called fi elds and methods. An
-              object is an instance of a Java class. There are three styles of comment: a single-line comment
-              (//), a multiline comment (/* */), and a Javadoc comment (/** */).</p>
-            <p>Java begins program execution with a main() method. The most common signature for
-              this method run from the command line is public static void main(String[] args).
-              Arguments are passed in after the class name, as in java NameOfClass firstArgument.
-              Arguments are indexed starting with 0.</p>
-            <p>Java code is organized into folders called packages. To reference classes in other packages,
-              you use an import statement. A wildcard ending an import statement means you want
-              to import all classes in that package. It does not include packages that are inside that one.
-              java.lang is a special package that does not need to be imported.</p>
-          <p>Constructors create Java objects. A constructor is a method matching the class name and
-            omitting the return type. When an object is instantiated, fi elds and blocks of code are
-            initialized fi rst. Then the constructor is run.</p>
-            <p>Primitive types are the basic building blocks of Java types. They are assembled into
-              reference types. Reference types can have methods and be assigned to null. In addition to
-              “normal” numbers, numeric literals are allowed to begin with 0 (octal), 0x (hex), 0X (hex),
-              0b (binary), or 0B (binary). Numeric literals are also allowed to contain underscores as long
-              as they are directly between two other numbers.</p>
-            <p>Declaring a variable involves stating the data type and giving the variable a name.
-              Variables that represent fi elds in a class are automatically initialized to their corresponding
-              “zero” or null value during object instantiation. Local variables must be specifi cally
-              initialized. Identifi ers may contain letters, numbers, $, or _. Identifi ers may not begin with
-              numbers.</p>
-            <p>Scope refers to that portion of code where a variable can be accessed. There are three
-            kinds of variables in Java, depending on their scope: instance variables, class variables, and
-              local variables. Instance variables are the nonstatic fi elds of your class. Class variables are
-              the static fi elds within a class. Local variables are declared within a method.</p>
-            <p>For some class elements, order matters within the fi le. The package statement comes fi rst
-              if present. Then comes the import statements if present. Then comes the class declaration.
-              Fields and methods are allowed to be in any order within the class.
-
-              </p>
-            <p> Garbage collection is responsible for removing objects from memory when they can
-              never be used again. An object becomes eligible for garbage collection when there are no
-              more references to it or its references have all gone out of scope. The finalize() method
-              will run once for each object if/when it is fi rst garbage collected.</p>
-            <p>Java code is object oriented, meaning all code is defi ned in classes. Access modifi ers
-              allow classes to encapsulate data. Java is platform independent, compiling to bytecode. It is
-              robust and simple by not providing pointers or operator overloading. Finally, Java is secure
-              because it runs inside a virtual machine.</p>
+            <p *ngFor="let paragraphe of chapter.summary">{{paragraphe}}</p>
             <a class="btn  btn-outline-primary btn-lg btn-round" (click)="pass(chapter)" role="button"><i class="fa fa-question" aria-hidden="true"></i> Review Chapter {{chapter.id}}</a>
           </div>
         </div>

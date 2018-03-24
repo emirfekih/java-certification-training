@@ -11,6 +11,8 @@ import { TipsComponent } from './components/tips/tips.component';
 import { LoginComponent } from './components/login/login.component';
 import { OcasummaryComponent } from './components/ocasummary/ocasummary.component';
 import { OcpComponent } from './components/ocp/ocp.component';
+import {ChapterService} from "./service/chapter.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -23,12 +25,15 @@ import { OcpComponent } from './components/ocp/ocp.component';
     OcasummaryComponent,
     OcpComponent,
 
+
+
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ChapterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
