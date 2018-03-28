@@ -19,5 +19,8 @@
         <a class="nav-link" routerLink="/ocp">OCP Review</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/login">Login</a>
+        <a *ngIf="!authService.isLoggedIn()" class="nav-link" routerLink="/login">Login</a>
       </li>
+      <li class="nav-item">
+          <a *ngIf="authService.isLoggedIn()" class="nav-link" routerLink="/" (click)="authService.logout()">Logout</a>
+        </li>
