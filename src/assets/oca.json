@@ -1,6 +1,6 @@
 [
-  { "id":1,
-  "title": "Java Building Blocks",
+  { "chapterId":1,
+  "chapterName": "Java Building Blocks",
   "passed": false,"chevron":false,
   "covered":[
              {"title":"Java Basics","covers":["Define the scope of variables","Define the structure of a Java class",
@@ -33,8 +33,8 @@
 
 
 
-  { "id":2,
-    "title": "Operators & Statements",
+  { "chapterId":2,
+    "chapterName": "Operators & Statements",
     "passed": false,"chevron":false,
     "covered":[{"title":"Using Operators and Decision Constructs","covers":["Use Java operators; including parentheses to override operator precedence","Create if and if/else and ternary constructs","Use a switch statement"]},{"title":"Using Loop Constructs","covers":["Create and use while loops","Create and use for loops including the enhanced for loop","Create and use do/while loops","Compare loop constructs","Use break and continue"]}],
     "objectives":["Be able to write code that uses Java operators","Be able to recognize which operators are associated with which data types.","Understand Java operator precedence","Be able to write code that uses parentheses to override operator precedence","Understand if and switch decision control statements.","Understand loop statements","Understand how break and continue can change flow control"],
@@ -47,8 +47,8 @@
   },
 
 
-  { "id":3,
-    "title": "Core Java APIs",
+  { "chapterId":3,
+    "chapterName": "Core Java APIs",
     "passed": false,"chevron":false,
     "covered":[{"title":"Using Operators and Decision Constructs","covers":["Test equality between Strings and other objects using == and equals()"]},
       {"title":"Creating and Using Arrays","covers":["Declare, instantiate, initialize and use a one-dimensional array","Declare, instantiate, initialize and use a multi-dimensional array"]},
@@ -64,8 +64,8 @@
   },
 
 
-  { "id":4,
-    "title": "Methods and Encapsulation",
+  { "chapterId":4,
+    "chapterName": "Methods and Encapsulation",
     "passed": false,"chevron":false,
     "covered":[{"title":"Working with Methods and Encapsulation","covers":["Create methods with arguments and return values; including overloaded methods","Apply the static keyword to methods and fields","Create and overload constructors; include impact on default constructors","Apply access modifiers","Apply encapsulation principles to a class","Determine the effect upon object references and primitive values when they are passed into methods that change the values"]},
       {"title":"Working with Selected classes from the Java API","covers":["Write a simple Lambda expression that consumes a Lambda Predicate expression"]}],
@@ -83,8 +83,8 @@
     ]
   },
 
-  { "id":5,
-    "title": "Class Design",
+  { "chapterId":5,
+    "chapterName": "Class Design",
     "passed": false,"chevron":false,
     "covered":[{"title":"Working with Inheritance","covers":["Describe inheritance and its benefits", "Develop code that demonstrates the use of polymorphism; including overriding and object type versus reference type","Determine when casting is necessary","Use super and this to access objects and constructors","Use abstract classes and interfaces"]}],
     "objectives":["Be able to write code that extends other classes.","Understand the rules for method overriding.","Understand the rules for hiding methods and variables","Recognize the difference between method overriding and method overloading.","Be able to write code that creates and extends abstract classes.","Be able to write code that creates, extends, and implements interfaces.","Be able to write code that uses default and static interface methods","Understand polymorphism","Recognize valid reference casting"],
@@ -95,8 +95,8 @@
       "Finally, this chapter introduced the concept of polymorphism, central to the Java language, and showed how objects can be accessed in a variety of forms. Make sure you understand when casts are needed for accessing objects, and be able to spot the difference between compile-time and runtime cast problems."]
   },
 
-  { "id":6,
-    "title": "Exeptions",
+  { "chapterId":6,
+    "chapterName": "Exceptions",
     "passed": false,"chevron":false,
     "covered":[{"title":"Handling Exceptions","covers":["Differentiate among checked exceptions, unchecked exceptions and Errors","Create a try-catch block and determine how exceptions alter normal program flow","Describe the advantages of Exception handling","Create and invoke a method that throws an exception","Recognize common exception classes (such as NullPointerException, ArithmeticException ArrayIndexOutOfBoundsException, ClassCastException)"]}],
     "objectives":["Differentiate between checked and unchecked exceptions.","Understand the flow of a try statement","Identify whether an exception is thrown by the programmer or the JVM.","Declare methods that declare exceptions.","Recognize when to use throw versus throws"],

@@ -4,12 +4,13 @@
 import {Covered} from './Covered'
 
 export class Chapter {
-  id:any;
-  title: string;
+  chapterId: any;
+  chapterName: string;
   passed: boolean;
-  chevron:boolean;
-  covered:Covered[];
-  objectives:string[];
-  summary:string[];
+  chevron: boolean;
+  covered: Covered[];
+  objectives: string[];
+  summary: string[];
+
 
 }

@@ -1,0 +1,83 @@
+<div class="jumbotron" id="jumb">
+  <div *ngFor="let question of filteredQuestions">
+
+    <div class="row justify-content-between">
+      <h5><div class="p-1 font-weight-bold"(click)="reviewQuestion(question)"><i class="fa fa-flag" rel="tooltip" title="Review question" [style.color] = "question.review ? '#007BFF' : 'transparent'"></i>&nbsp; &nbsp; Question
+        {{pager.index+1}} of {{pager.count}} :
+      </div></h5>
+      <div class="p-1"></div>
+      <div class="p-1 font-weight-bold">00:00</div>
+    </div>
+
+
+    <hr>
+    <h5><div class="row ">
+      {{question.questionStatement}}
+      <br>
+    </div></h5>
+    <br>
+
+    <div class="row" *ngIf=" question.questionType === 'Multiple Select'   ">
+      <div class="col-md-8">
+        <div class="custom-control custom-checkbox " *ngFor="let choice of question.choices">
+
+            <input type="checkbox" class="custom-control-input" [attr.id]="'customCheck'+choice.choiceId">
+            <label class="custom-control-label" [attr.for]="'customCheck'+choice.choiceId">{{choice.choiceStatement}}</label>
+
+        </div>
+      </div>
+      <div class="col-md-8 "></div>
+    </div>
+
+
+    <div class="row" *ngIf=" question.questionType === 'Single Select'   ">
+      <div class="col-md-8">
+        <div class="custom-control custom-radio" *ngFor="let choice of question.choices">
+          <input type="radio" [attr.id]="'customRadio1'+choice.choiceId" name="customRadio" class="custom-control-input">
+          <label class="custom-control-label" [attr.for]="'customRadio1'+choice.choiceId">{{choice.choiceStatement}}</label>
+        </div>
+      </div>
+      <div class="col-md-8 "></div>
+    </div>
+
+
+
+    <hr>
+
+
+    <div class="row justify-content-between">
+      <div class="col-md-4">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+          <button type="button" class="btn btn-secondary" (click)="goTo(pager.index - 1)">Previous</button>
+          <button type="button" class="btn btn-secondary" (click)="goTo(pager.index + 1)">Next</button>
+
+          <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <a class="dropdown-item" href="#">Dropdown link</a>
+              <a class="dropdown-item" href="#">Dropdown link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="float-right">
+          <div class="btn-group" role="group" aria-label="Button group">
+
+            <button type="button" class="btn btn-secondary">Pause</button>
+            <button type="button" class="btn btn-secondary">Save Session</button>
+            <button type="button" class="btn btn-secondary">Submit</button>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>

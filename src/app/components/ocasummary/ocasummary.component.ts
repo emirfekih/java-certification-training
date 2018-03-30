@@ -8,7 +8,7 @@ import {ChapterService} from "../../service/chapter.service";
 })
 export class OcasummaryComponent implements OnInit {
 
-  chapters:any;
+  chapters:Chapter[];
 
 
 

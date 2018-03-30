@@ -1,0 +1,14 @@
+#jumb{
+  border-radius: 10px;
+  padding-top:25px;
+  padding-bottom:10px;
+  margin-bottom:20px;
+  margin-top:20px;
+
+}
+
+.fa.fa-flag{
+  color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #0b97ff;
+}

@@ -8,46 +8,46 @@
   </p>
 </div>
 
-<div *ngFor="let chapter of chapters" [attr.id]="'accordion'+chapter.id" role="tablist" aria-multiselectable="true" >
+<div *ngFor="let chapter of chapters" [attr.id]="'accordion'+chapter.chapterId" role="tablist" aria-multiselectable="true" >
   <div id ="roundedCard" class="card bg-light mb-3">
-    <div class="card-header" role="tab" data-toggle="collapse" [attr.data-parent]="'#accordion'+chapter.id" [attr.data-target]="'#collapse'+chapter.id" aria-expanded="true" aria-controls="collapseOne" role="tab"  >
-      <h4 class="text-primary" (click)="toggleChevron(chapter)" ><i [ngClass]="chapter.chevron ? 'fa fa-chevron-down':'fa fa-chevron-right'"></i><a> Chapter {{chapter.id}} : {{chapter.title}}</a><i id="checkStyle" class="fa fa-check" aria-hidden="true"  [style.color] = "chapter.passed ? '#007BFF' : 'lightblue'" ></i></h4>
+    <div class="card-header" role="tab" data-toggle="collapse" [attr.data-parent]="'#accordion'+chapter.chapterId" [attr.data-target]="'#collapse'+chapter.chapterId" aria-expanded="true" aria-controls="collapseOne" role="tab"  >
+      <h4 class="text-primary" (click)="toggleChevron(chapter)" ><i [ngClass]="chapter.chevron ? 'fa fa-chevron-down':'fa fa-chevron-right'"></i><a> Chapter {{chapter.chapterId}} : {{chapter.chapterName}}</a><i id="checkStyle" class="fa fa-check" aria-hidden="true"  [style.color] = "chapter.passed ? '#007BFF' : 'lightblue'" ></i></h4>
     </div>
 
-    <div [attr.id]="'collapse'+chapter.id" class="collapse" role="tabpanel" [attr.aria-labelledby]="'heading'+chapter.id" >
+    <div [attr.id]="'collapse'+chapter.chapterId" class="collapse" role="tabpanel" [attr.aria-labelledby]="'heading'+chapter.chapterId" >
       <div class="card-body">
         <div class="card-title"><div class="bordered-tab-contents">
           <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item text-primary">
-              <a class="nav-link pointer active show" data-toggle="tab" [attr.data-target]="'#covered'+chapter.id"><h5>Covered in this chapter</h5></a>
+              <a class="nav-link pointer active show" data-toggle="tab" [attr.data-target]="'#covered'+chapter.chapterId"><h5>Covered in this chapter</h5></a>
             </li>
             <li class="nav-item text-primary">
-              <a class="nav-link pointer" data-toggle="tab" [attr.data-target]="'#objectives'+chapter.id"><h5>Objectives</h5></a>
+              <a class="nav-link pointer" data-toggle="tab" [attr.data-target]="'#objectives'+chapter.chapterId"><h5>Objectives</h5></a>
             </li>
             <li class="nav-item text-primary">
-              <a class="nav-link pointer" data-toggle="tab" [attr.data-target]="'#summary'+chapter.id"><h5>Summary</h5></a>
+              <a class="nav-link pointer" data-toggle="tab" [attr.data-target]="'#summary'+chapter.chapterId"><h5>Summary</h5></a>
             </li>
           </ul></div>
 
         <div class="tab-content">
 
-          <div class="tab-pane fade active show" [attr.id]="'covered'+chapter.id">
+          <div class="tab-pane fade active show" [attr.id]="'covered'+chapter.chapterId">
             <ul *ngFor="let cover of chapter.covered"><h5>{{cover.title}}</h5>
               <li *ngFor="let c of cover.covers">{{c}}</li>
             </ul>
           </div>
 
 
-          <div class="tab-pane fade" [attr.id]="'objectives'+chapter.id">
+          <div class="tab-pane fade" [attr.id]="'objectives'+chapter.chapterId">
             <ul *ngFor="let obj of chapter.objectives">
               <li>{{obj}}</li>
             </ul>
           </div>
 
 
-          <div class="tab-pane fade" [attr.id]="'summary'+chapter.id">
+          <div class="tab-pane fade" [attr.id]="'summary'+chapter.chapterId">
             <p *ngFor="let paragraphe of chapter.summary">{{paragraphe}}</p>
-            <a class="btn  btn-outline-primary btn-lg btn-round" (click)="pass(chapter)" role="button"><i class="fa fa-question" aria-hidden="true"></i> Review Chapter {{chapter.id}}</a>
+            <a class="btn  btn-outline-primary btn-lg btn-round" (click)="pass(chapter)" role="button"><i class="fa fa-question" aria-hidden="true"></i> Review Chapter {{chapter.chapterId}}</a>
           </div>
         </div>
       </div>

@@ -1,10 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
-body{
+
+
+html
+{
+  height:100%;
+}
+
+body
+{
+  min-height:100%;
+  padding:0; /*not needed, but otherwise header and footer tags have padding and margin*/
+  margin:0; /*see above comment*/
   background-color:#002B36;
   background-size:100% 100%;
   bottom:0px;
   top:0px;
-  margin: 0px;
   position:absolute;
   width: 100%;
+}
+
+body
+{
+  position:relative;
+  padding-bottom:60px; /* Same height as the footer. */
+}
+
+footer
+{
+  position:absolute;
+  bottom:0px;
+  height: 30px;
+
 }
