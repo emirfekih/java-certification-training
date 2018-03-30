@@ -37,6 +37,7 @@ import {ExamService} from "./service/exam.service";
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    HttpModule
   ],
   providers: [ChapterService,ExamService,AuthService],
   bootstrap: [AppComponent]
