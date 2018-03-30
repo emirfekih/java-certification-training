@@ -1,0 +1,296 @@
+[
+    { "id":1,
+    "title": "Advanced Class Design",
+    "passed": false,"chevron":false,
+    "covered":[
+               {"title":"Java Class Design","covers":["Implement inheritance including visibility modifiers and composition",
+                "Implement polymorphism",
+                "Override hashCode, equals, and toString methods from Object class",
+                "Develop code that uses the static keyword on initialize blocks, variables, methods, and classes"]
+               },
+  
+            {"title":"Advanced Java Class Design","covers":["Develop code that uses abstract classes and methods",
+                "Develop code that uses final keyword",
+                "Create inner classes including static inner class, local class, nested class, and anonymous inner class",
+                "Use enumerated types including methods, and constructors in an enum type",
+                "Develop code that declares, implements, and/or extends interface and use the @Override annotation"]}
+            ],
+  
+    "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
+      "Be able to determine where variables go into and out of scope.",
+      "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+    "summary":["The instanceof keyword compares an object to a class or interface type. It also looks at subclasses and subinterfaces.",
+        "x instanceof Object returns true unless x is null. If the compiler can determine that there is no way for instanceof to return true, it will generate a compiler error.",
+        "Virtual method invocation means that Java will look at subclasses when finding the right method to call. This is true, even from within a method in the superclass.",
+        "The methods toString(), equals(), and hashCode() are implemented in Objects that classes can override to change their behavior.",
+        "toString() is used to provide a human‐readable representation of the object.",
+        "equals() is used to specify which instance variables should be considered for equality. equals() is required to return false when the object passed in is null or is of the wrong type.",
+        "hashCode() is used to provide a grouping in some collections. hashCode() is required to return the same number when called with objects that are equals().",
+        "The enum keyword is short for enumerated values or a list of values. Enums can be used in switch statements. They are not int values and cannot be compared to int values.",
+        "In a switch, the enum value is placed in the case. Enums are allowed to have instance variables, constructors, and methods.",
+        "Enums can also have value‐specific methods. The enum itself declares that method as well. It can be abstract, in which case all enum values must provide an implementation. Alternatively, it can be concrete, in which case enum values can choose whether they want to override the default implementation.",
+        "There are four types of nested classes.",
+        "Member inner classes require an instance of the outer class to use. They can access private members of that outer class.",
+        "Local inner classes are classes defined within a method. They can also access private members of the outer class. Local inner classes can also access final or effectively final local variables.",
+        "Anonymous inner classes are a special type of local inner class that does not have a name. Anonymous inner classes are required to extend exactly one class by name or implement exactly one interface.",
+        "Static nested classes can exist without an instance of the outer class.",
+        "This chapter also contained a review of access modifiers, overloading, overriding, abstract classes, static, final, and imports. It also introduced the optional @Override annotation for overridden methods or methods implemented from an interface."       
+     ]
+    },
+    
+    { "id":2,
+        "title": "Design Patterns and Principles",
+        "passed": false,"chevron":false,
+        "covered":[
+                   {"title":"Java Basics","covers":["Develop code that declares, implements, and/or extends interfaces and use the @Override annotation",
+                    "Create and use Lambda expressions"]
+                   },
+                   {"title":"Lambda Built‐in Functional Interfaces","covers":["Use the built‐in interfaces included in the java.util.function package such as Predicate, Consumer, Function, and Supplier"]
+                   },
+               {"title":"Advanced Java Class Design","covers":["Implement encapsulation",
+                "Implement inheritance including visibility modifiers and composition",
+                "Implement polymorphism",
+                "Create and use singleton classes and immutable classes"]}
+               ],
+      
+        "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
+          "Be able to determine where variables go into and out of scope.",
+          "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+        "summary":["One of the primary goals of this chapter was to teach you how to write better code. We demonstrated techniques for designing class structures that scale naturally over time, integrate well with other applications, and are easy for other developers to read and understand.",
+            "We started off with a brief review of interfaces from your OCA studies showing how to declare, implement, and extend them. We then moved on to functional programming and reviewed the various syntax options available for defining functional interfaces and writing lambda expressions.",
+            "Given the prevalence of lambda expressions throughout Java 8, you absolutely need to practice writing and using lambda expressions before taking the exam.",
+            "We concluded the discussion with a review of the generics‐based Predicate interface and showed how it can be used in place of your own functional interface. We will return to lambdas and streams in Chapter 3 and Chapter 4 in much greater detail.",
+            "This chapter introduced the concept of polymorphism, which is central to the Java language, and showed how objects can be accessed in a variety of forms. Make sure that you understand when casts are needed for accessing objects, and be able to spot the difference between compile‐time and runtime cast problems.",
+            "In the design principles section, we taught you how to encapsulate your classes in Java properly, allowing you to enforce class invariants in your data model. We then described the is‐a and has‐a principles and showed how you can apply them to your data model.",
+            "Finally, we introduced the technique of creating class structures using object composition that rely on the has‐a principle as an alternative to inheritance.",
+            "We completed this chapter by explaining what a design pattern is and presenting you with four well‐known design patterns.",
+            "Design patterns provide you with a way to solve a problem that you encounter using solutions that other developers have already built and generalized.",
+            "The singleton pattern is excellent for managing a single shared instance of an object withinan application.",
+            "The immutable object pattern is useful for creating read‐only objects that cannot be modified by other classes.",
+            "The builder pattern solves the problem of how to create complex objects cleanly, and it is often used in conjunction with the immutable object pattern.",
+            "Finally, the factory pattern is useful for creating various objects without exposing the underlying constructors and complex rules for selecting a particular object subtype."
+            
+         ]
+        },
+        { "id":3,
+            "title": "Generics and collections",
+            "passed": false,"chevron":false,
+            "covered":[
+                       {"title":"Generics and Collections","covers":["Create and use a generic class",
+                        "Create and use ArrayList, TreeSet, TreeMap and ArrayDeque objects",
+                        "Use java.util.Comparator and java.lang.Comparable interfaces",
+                        "Iterate using forEach methods on Streams and List",
+                        "Use method references with Streams"]
+                       },
+          
+                   {"title":"Advanced Java Class Design","covers":["Create and use lambda expressions"]},
+                   {"title":"Generics and Collections","covers":["Filter a collection using lambda expressions"]},
+                   {"title":"Java Stream API","covers":["Use of merge()and flatMap()methods of the Stream API"]}
+                   ],
+          
+            "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
+              "Be able to determine where variables go into and out of scope.",
+              "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+            "summary":["Generics are type parameters for code. To create a class with a generic parameter, add <T> after the class name. You can use any name you want for the type parameter. Single uppercase letters are common choices.",
+            "The diamond operator (<>) is used to tell Java that the generic type matches the declaration without specifying it again. The diamond operator can be used for local variables or instance variables as well as one-line declarations.",
+            "Generics allow you to specify wildcards. <?> is an unbounded wildcard that means any type. <? extends Object> is an upper bound that means any type that is Object or extends it. <? extends MyInterface> means any type that implements MyInterface. <? super Number> is a lower bound that means any type that is Number or a superclass. A compiler error results from code that attempts to add or remove an item in a list with an unbounded or upper-bounded wildcard.",
+            "When working with code that doesn’t use generics (also known as legacy code or raw types), Java gives a compiler warning. A compiler warning is different than a compiler error in that the compiler still produces a class file. If you ignore the compiler warning, the code might throw a ClassCastException at runtime. Unboxing gives a compiler error when generics are not used.",
+            "Each primitive class has a corresponding wrapper class. For example, long’s wrapper class is Long. Java can automatically convert between primitive and wrapper classes when needed. This is called autoboxing and unboxing. Java will only use autoboxing if it doesn’t find a matching method signature with the primitive. For example, remove(int n) will be called rather than remove(Object o) when called with an int.",
+            "The Java Collections Framework includes four main types of data structures: lists, sets, queues, and maps. The Collection interface is the parent interface of List, Set, and Queue.",
+            "The Map interface does not extend Collection. You need to recognize the following: ",
+                "- List—An ordered collection of elements that allows duplicate entries",
+                "- ArrayList—Standard resizable list.",
+                "- LinkedList—Can easily add/remove from beginning or end.",
+                "- Vector—Older thread-safe version of ArrayList.",
+                "- Stack—Older last-in, first-out class.",
+                "- Set—Does not allow duplicates",
+                "- HashSet—Uses hashcode() to find unordered elements.",
+                "- TreeSet—Sorted and navigable. Does not allow null values.",
+                "- Queue—Orders elements for processing",
+                "- LinkedList—Can easily add/remove from beginning or end.",
+                "- ArrayDeque—First-in, first-out or last-in, first-out. Does not allow null values.",
+                "- Map—Maps unique keys to values",
+                "- HashMap—Uses hashcode() to find keys.",
+                "- TreeMap—Sorted map. Does not allow null keys.",
+                "- Hashtable—Older version of hashmap. Does not allow null keys or values.",
+            "The Comparable interface declares the compareTo() method. This method returns a negative number if the object is smaller than its argument, zero if the two objects are equal, and a positive number otherwise. compareTo() is declared on the object that is being compared, and it takes one parameter. The Comparator interface definesthe compare() method. A negative number is returned if the first argument is smaller, zero if they are equal, and a positive number otherwise. compare() can be declared in any code, and it takes two parameters. Comparator is often implemented using a lambda.",
+            "The Arrays and Collections classes have methods for sort() and binarySearch(). Both take an optional Comparator parameter. It is necessary to use the same sort order for both sorting and searching, so the result is not undefined. Collection has a few methods that take lambdas, including removeIf(), forEach(), and merge().",
+            "A method reference is a compact syntax for writing lambdas that refer to methods.",
+            "There are four types: static methods, instance methods referring to a specific instance, instance methods with the instance supplied at runtime, and constructor references."                
+             ]
+            },
+
+            { "id":4,
+                "title": "Functional programming",
+                "passed": false,"chevron":false,
+                "covered":[
+                           {"title":"Generics and Collections","covers":["Collections Streams and Filters",
+                            "Iterate using forEach methods of Streams and List",
+                            "Describe Stream interface and Stream pipeline",
+                            "Use method references with Streams"]
+                           },
+              
+                       {"title":"Lambda Built-In Functional Interfaces","covers":["Use the built-in interfaces included in the java.util.function package such as Predicate, Consumer, Function, and Supplier",
+                        "Develop code that uses primitive versions of functional interfaces",
+                        "Develop code that uses binary versions of functional interfaces",
+                        "Develop code that uses the UnaryOperator interface"]},
+                       {"title":"Java Stream API","covers":["Filter a collection using lambda expressions"]}
+                       ],
+              
+                "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
+                  "Be able to determine where variables go into and out of scope.",
+                  "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+                "summary":["Lambdas can reference static variables, instance variables, effectively final parameters, and effectively final local variables. A functional interface has a single abstract method. You must know the functional interfaces:",
+                    "- Supplier<T>: Method get() returns T",
+                    "- Consumer<T>: Method accept(T t) returns void",
+                    "- BiConsumer<T>: Method accept(T t, U u) returns void",
+                    "- Predicate<T>: Method test(T t) returns boolean",
+                    "- BiPredicate<T>: Method test(T t, U u) returns boolean",
+                    "- Function<T, R>: Method apply(T t) returns R",
+                    "- BiFunction<T, U, R>: Method apply(T t, U u) returns R",
+                    "- UnaryOperator<T>: Method apply(T t) returns T",
+                    "- BinaryOperator<T>: Method apply(T t1, T t2) returns T",
+                    "An Optional can be empty or store a value. You can check if it contains a value with ifPresent() and get() the value inside. There are also three methods that take functional interfaces as parameters: ifPresent(Consumer c), orElseGet(Supplier s), an orElseThrow(Supplier s). There are three optional types for primitives: DoubleSupplier, IntSupplier, and LongSupplier. These have the methods getDouble(), getInt(), and getLong(), respectively.",
+                    "A stream pipeline has three parts. The source is required, and it creates the data in the stream. There can be zero or more intermediate operations, which aren’t executed until the terminal operation runs. Examples of intermediate operations include filter(), flatMap(), and sorted(). Examples of terminal operations include allMatch(), count(), and forEach().",
+                    "There are three primitive streams: DoubleStream, IntStream, and LongStream. In addition to the usual Stream methods, they have range() and rangeClosed(). The call range(1, 10) on IntStream and LongStream creates a stream of the primitives from 1 to 9. By contrast, rangeClosed(1, 10) creates a stream of the primitives from 1 to 10. The primitive streams have math operations including average(), max(), and sum(). They also have summaryStatistics() to get many statistics in one call. There are also functional interfaces specific to streams. Except for BooleanSupplier, they are all for double, int, and long primitives as well.",
+                    "You can use a Collector to transform a stream into a traditional collection. You can even group fields to create a complex map in one line. Partitioning works the same way as grouping, except that the keys are always true and false. A partitioned map always has two keys even if the value is empty for the key.",
+                    "You should review the tables in the chapter. You absolutely must memorize Table 4.1.",
+                    "You should memorize Table 4.6 and Table 4.7 but be able to spot incompatibilities, such as type differences, if you can’t memorize these two. Finally, remember that streams are lazily evaluated. They take lambdas or method references as parameters, which occur later when the method is run."
+                                    
+                 ]
+                },
+                { "id":5,
+                    "title": "Dates, Strings and Localization",
+                    "passed": false,"chevron":false,
+                    "covered":[
+                               {"title":"Use Java SE 8 Date/Time API","covers":["Create and manage date-based and time-based events including a combination of date and time into a single object using LocalDate, LocalTime, LocalDateTime, Instant, Period and Duration.",
+                                "Work with dates and times across time zones and manage changes resulting from daylight savings including Format date and time values",
+                                "Define and create and manage date-based and time-based events using Instant, Period, Duration and TemporalUnit"]
+                               },
+                  
+                           {"title":"Localization","covers":["Read and set the local by using the Locale object",
+                            "Create and read a Properties file",
+                            "Build a resource bundle for each locale and load a resource bundle in an application"]}
+                           ],
+                  
+                    "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
+                      "Be able to determine where variables go into and out of scope.",
+                      "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+                    "summary":["A LocalDate contains just a date. A LocalTime contains just a time. A LocalDateTime contains both a date and time. A ZonedDateTime adds a time zone. All four have private constructors and are created using LocalDate.now() or LocalDate.of() (or the equivalents for that class). Instant represents a moment in time.",
+                        "Dates and times can be manipulated using plus or minus methods. The Period class represents a number of days, months, or years to add to or subtract from a LocalDate, LocalDateTime, or ZonedDateTime. The Duration class represents hours, minutes, and seconds.",
+                        "It is used with LocalTime, LocalDateTime, or ZonedDateTime.",
+                        "UTC represents the time zone offset from zero. Daylight savings time is observed in the United States and other countries by moving the clocks ahead an hour in the spring and an hour back in the fall. Java changes time and UTC offset to account for this.",
+                        "You can create a Locale class with a desired language and optional country. The language is a two-letter lowercase code, and the country is a two-letter uppercase code. For example, en and en_US are locales for English and US English, respectively.",
+                        "ResourceBundle allows specifying key/value pairs in a property file or in a Java class. Java goes through candidate resource bundles from the most specific to the most general to find a match. If no matches are found for the requested locale, Java switches to the default locale and then finally the default resource bundle. Java looks at the equivalent Java class before the property file for each locale. Once a matching resource bundle is found, Java only looks in the hierarchy of that resource bundle to find keys.",
+                        "NumberFormat uses static methods to retrieve the desired formatter, such as one for currency. DateTimeFormatter is used to output dates and times in the desired format. The date and time classes are all immutable, which means that the return value must be used or the operation will be ignored."                   
+                     ]
+                },
+                { "id":6,
+                    "title": "Exceptions and Assertions",
+                    "passed": false,"chevron":false,
+                    "covered":[
+                               {"title":"Exceptions and Assertions","covers":["Use try-catch and throw statements",
+                                "Use catch, multi-catch, and finally clauses",
+                                "Use Autoclose resources with a try-with-resources statement",
+                                "Create custom exceptions and Auto-closeable resources",
+                                "Test invariants by using assertions"]}
+                           ],
+                  
+                    "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
+                      "Be able to determine where variables go into and out of scope.",
+                      "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+                    "summary":["An exception indicates that something unexpected happened. Subclasses of java.lang.",
+                        "Error are exceptions that a program should not attempt to handle. Subclasses of java.",
+                        "lang.RuntimeException are runtime (unchecked) exceptions. Subclasses of java.lang.",
+                        "Exception that do not subclass java.lang.RuntimeException are checked exceptions. Java requires checked exceptions to be handled or declared.",
+                        "If a try statement has multiple catch blocks, at most one catch block can run. Java looks for an exception that can be caught by each catch block in the order in which they appear, and the first match is run. Then execution continues after the try statement to the finally block if present. If both catch and finally throw an exception, the one from finally gets thrown. Common checked exceptions include ParseException, IOException, and SQLException.",
+                        "Multi-catch allows catching multiple exception types in the same catch block. The types are separated with a pipe (|). The multiple exception types are not allowed to have a subclass/ superclass relationship. The variable in a multi-catch expression is effectively final.",
+                        "Try-with-resources allows Java to take care of calling the close() method. This is called automatic resource management. Objects instantiated in the try clause must implement the AutoCloseable interface. This interface has a single method close() and can throw any type of Exception. Unlike traditional try statements, try-with-resources does not require a catch or finally block to be present. If the try clause and one or more of the close() methods throw an exception, Java uses suppressed exceptions to keep track of both.",
+                        "Similarly, if multiple close() methods throw an exception, the first one is the primary exception and the others are suppressed exceptions. getSuppressed() allows these exceptions to be retrieved.",
+                        "An assertion is a boolean expression placed at a particular point in your code where you think something should always be true. A failed assertion throws an AssertionError.",
+                        "Assertions should not change the state of any variables. You saw how the –ea and –enableassertion flags turn on assertions."
+                        ]
+                },
+                { "id":7,
+                    "title": "Concurrency",
+                    "passed": false,"chevron":false,
+                    "covered":[{
+                    "title":"Java Concurrency","covers":["Create worker threads using Runnable, Callable, and use an ExecutorService to concurrently execute tasks",
+                            "Identify potential threading problems among deadlock, starvation, livelock, and race conditions",
+                            "Use synchronized keyword and java.util.concurrent.atomic package to control the order of thread execution",
+                            "Use java.util.concurrent collections and classes including CyclicBarrier and CopyOnWriteArrayList",
+                            "Use parallel Fork/Join Framework",
+                            "Use parallel Streams including reduction, decomposition, merging processes, pipelines, and performance."]}
+                           ],
+                  
+                    "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
+                      "Be able to determine where variables go into and out of scope.",
+                      "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+                    "summary":["This chapter introduced you to threads and showed you how to process tasks in parallel using the Concurrency API. For the exam, you should know how to create threads indirectly using an ExecutorService and a fork/join recursive framework. The work that a thread performs can be defi ned in an instance of Runnable or Callable . As of Java 8, these tasks can now be expressed as lambda expressions.",
+                        "We presented techniques for organizing tasks among multiple threads using atomic classes, synchronization blocks, synchronized methods, and the CyclicBarrier class.",
+                        "The Concurrency API includes numerous collections classes that support multi-threaded processing. For the exam, you should also be familiar with the CopyOnWriteArrayList class, which creates a new underlying structure anytime the list is modifi ed.",
+                        "We then introduced the notion of parallel streams and showed you how using them can improve performance in your application. Parallel streams can also cause unexpected results, since the results are no longer ordered. We also reviewed parallel reductions and showed how they differed from reductions on serial streams.",
+                        "We concluded this chapter by discussing potential threading issues with which you should be familiar for the exam including deadlock, starvation, livelock, and race conditions. You need to know only the basic theory behind these concepts for the exam. In professional software development, however, finding and resolving such problems is often quite challenging."
+                        ]
+                },
+                { "id":8,
+                    "title": "IO",
+                    "passed": false,"chevron":false,
+                    "covered":[
+                               {"title":"Java I/O Fundamentals","covers":["Read and write data from the console",
+                                "Use BufferedReader, BufferedWriter, File, FileReader, FileWriter, FileInputStream, FileOutputStream, ObjectOutputStream, ObjectInputStream, and PrintWriter in the java.io.package."]}],
+                  
+                    "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
+                      "Be able to determine where variables go into and out of scope.",
+                      "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+                    "summary":["The bulk of this chapter focused on teaching you how to use Java to interact with files. We started off by introducing you to the concept of files and directories, and then we showed you how to reference them using path Strings. We presented the java.io.File class, and we showed you how to use it to read basic file information.",
+                        "We then introduced java.io streams to read/write file contents, and we described their various attributes, including low-level vs. high-level, byte vs. character, input vs. output, and so on. The description of the stream is designed to help you remember the function of the stream by using its name as a context clue.",
+                        "We visited many of the byte and character stream classes that you will need to know for the exam in increasing order of complexity. A common practice is to start with a low-level resource or file stream and wrap it in a buffered stream to improve performance. You can also apply a high-level stream to manipulate the data, such as a data stream. We described what it means to be serializable in Java, and we showed you how to use the object stream classes to persist objects directly to and from disk.",
+                        "We concluded the chapter by showing you how to read input data from the user, using both the legacy System.in method and the newer Console class. The Console class has many advanced features, such as support for passwords and built-in support for String formatting."
+                         ]
+                },
+                { "id":9,
+                    "title": "NIO.2",
+                    "passed": false,"chevron":false,
+                    "covered":[
+                               {"title":"Java File I/O (NIO.2)","covers":["Use Path interface to operate on file and directory paths",
+                                "Use Files class to check, read, delete, copy, move, manage metadata of a file or directory",
+                                "Use Stream API with NIO.2"]}],
+                  
+                    "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
+                      "Be able to determine where variables go into and out of scope.",
+                      "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+                    "summary":["This chapter introduced the NIO.2 API for working with files and directories using the Path interface. For the exam, you need to know what the NIO.2 Path interface is and how it differs from the legacy java.io.File class. You should be familiar with how to create and use Path objects, including how to combine or resolve them with other Path objects.",
+                        "We spent time reviewing various static methods available in the Files helper class. As discussed, the name of the function often tells you exactly what it does. We explained that most of these methods are capable of throwing an IOException and many take optional vararg enum values.",
+                        "We also discussed how the NIO.2 API provides methods for reading and writing file metadata using views. Java uses views to retrieve all of the file system attributes for a file without numerous round-trips to the operating system. The NIO.2 API also includes support for operating system–specific file attributes, such as those found in Windows-, Mac-, and Linux-based file systems. For the exam, you should be familiar with the BasicFileAttributes and BasicFileAttributeView classes.",
+                        "With the introduction of functional programming in Java 8, the NIO.2 Files class was updated with new methods that use the lambda expressions and streams to process files and directories. For the exam, you need to know how to apply the Streams API in NIO.2 to walk a directory tree, search for files, and list the contents of a directory or file."
+                        ]
+                },
+                { "id":10,
+                    "title": "JDBC",
+                    "passed": false,"chevron":false,
+                    "covered":[
+                               {"title":"Building Database Applications with JDBC","covers":["Describe the interfaces that make up the core of the JDBC API including the Driver, Connection, Statement, and ResultSet interfaces and their relationship to provider implementations",
+                                "Identify the components required to connect to a database using the DriverManager class including the JDBC URL",
+                                "Submit queries and read results from the database including creating statements, returning result sets, iterating through the results, and properly closing result sets, statements, andconnections"]}],
+                  
+                    "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
+                      "Be able to determine where variables go into and out of scope.",
+                      "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+                    "summary":["There are four key SQL statements: SELECT reads data, INSERT creates a new row, UPDATE changes existing data, and DELETE removes existing data. On the exam, JDBC uses four key interfaces: Driver , Connection , Statement , and ResultSet . The interfaces are part of the Java API. A database-specifi c JAR fi le provides the implementations.",
+                        "To connect to a database, you need the JDBC URL. A JDBC URL has three parts separated by colons. The fi rst part is jdbc . The second part is the name of the vendor/ product. The third part varies by database, but it includes the location and name of the database. The location is either localhost or an IP address followed by an optional port.",
+                        "The DriverManager class provides a factory method called getConnection() to get a Connection implementation. Modern driver JARs contain a fi le in META-INF/servic e called java.sql.Driver . This is the name of the implementation class of Driver . Older JARs do not, and they require Class.forName() to load the driver.",
+                        "There are three ResultSet types that you can request when creating a Statement . If the type you request isn’t available, JDBC will downgrade your request to one that is available.",
+                        "The default, TYPE_FORWARD_ONLY , means that you can only go through the data in order.",
+                        "TYPE_SCROLL_INSENSITIVE means that you can go through the data in any order, but you won’t see changes made in the database while you are scrolling. TYPE_SCROLL_SENSITIVE means that you can go through the data in any order, and you will see changes made in the database.",
+                        "You can request either of two modes for ResultSet concurrency when creating a Statement . Again, JDBC will downgrade your request if needed. The default, CONCUR_READ_ONLY, means that you can read the ResultSet but not write to it. CONCUR_UPDATABLE means that you can both read and write to it.",
+                        "When running a SELECT SQL statement, the executeQuery() method returns a ResultSet. When running a DELETE, INSERT, or UPDATE SQL statement, the executeUpdate() method returns the number of rows that were affected. There is also an execute() method that returns a boolean to indicate whether the statement was a query.",
+                        "For a forward-only result set, call rs.next() from an if statement or while loop to set the cursor position. To get data from a column, call a method like getString(1) or getString('a'). Column indexes begin with 1, not 0. Aside from the primitive getters, there are getDate(), getTime(), and getTimeStamp(). They return just the date, just the time, or both, respectively. Also, getObject() can return any type.",
+                        "For a scrollable result set, you can use methods to move to an absolute() position or relative() position. Scrolling to next() and previous() are also allowed. There are also methods to go to the first() and last() rows. All of these methods return true if the cursor is pointing to a row with data. Other methods allow you to go outside the ResultSet with beforeFirst() and afterLast().",
+                        "It is important to close JDBC resources when finished with them to avoid leaking resources. Closing a Connection automatically closes the Statement and ResultSet objects.",
+                        "Closing a Statement automatically closes the ResultSet object. Also, running another SQL statement closes the previous ResultSet object from that Statement."
+                        ]
+                }   
+    ]
+
+  

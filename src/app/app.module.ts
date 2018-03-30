@@ -1,8 +1,9 @@
+import { AuthService } from './service/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-
+import { Http, HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -28,13 +29,16 @@ import {ExamService} from "./service/exam.service";
     OcpComponent,
     ExamComponent,
 
+
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
-  providers: [ChapterService,ExamService],
+  providers: [ChapterService,ExamService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

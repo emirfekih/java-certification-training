@@ -37,7 +37,7 @@
 .user-login-box,.last-part{
   padding:20px;
 }
-.user-login-box a,.user-login-box a:hover{
+.user-login-box button,.user-login-box a:hover{
   background-color: #B56162;
   border:1px solid #B56162;
   width: 100%;
