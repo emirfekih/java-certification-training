@@ -1,3 +1,4 @@
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'oca',component:OcasummaryComponent },
   {path:'ocp',component:OcpComponent},
   {path:'exam',component:ExamComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'signup', component:SignUpComponent }
 
 ];
 

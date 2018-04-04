@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-12 text-center user-login-header">
+    <h1>Sign Up Form</h1>
+  </div>
+</div>
+<form [formGroup]="form" (ngSubmit)="signUp()">  
+<div class="row">
+  <div class="col-md-4 col-sm-8 col-xs-12 col-md-offset-4 col-sm-offset-2 login-image-main text-center" style="margin: auto;">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12 user-login-box">
+        <div class="alert alert-success" *ngIf="passed">
+          Your registration has been successful 
+        </div>
+        <input type="text" class="form-control" placeholder="First Name"  id="firstname" formControlName="firstname">
+        <div class="alert alert-warning" *ngIf="firstname.touched && firstname.invalid">
+          <div *ngIf="firstname.errors.required">First Name is required</div>
+          <div *ngIf="firstname.errors.minlength">First Name should be minimum {{ firstname.errors.minlength.requiredLength }} characters </div>
+        </div>
+        <br>
+        <input type="text" class="form-control" placeholder="Last Name"  id="lastname" formControlName="lastname">
+        <div class="alert alert-warning" *ngIf="lastname.touched && lastname.invalid">
+            <div *ngIf="lastname.errors.required">Last Name is required</div>
+            <div *ngIf="lastname.errors.minlength">Last Name should be minimum {{ lastname.errors.minlength.requiredLength }} characters </div>
+          </div>
+        <br>
+        <input type="text" class="form-control" placeholder="User Name"  id="username" formControlName="username">
+        <div class="alert alert-warning" *ngIf="username.touched && username.invalid">
+          <div *ngIf="username.errors.required">User Name is required</div>
+          <div *ngIf="username.errors.minlength">User Name should be minimum {{ username.errors.minlength.requiredLength }} characters </div>
+          <div *ngIf="username.errors.cannotContainSpaces">User Name cannot contain spaces</div>
+        </div>
+        <br>
+        <input type="email" class="form-control" placeholder="Email"  id="email" formControlName="email" >
+        <div class="alert alert-warning" *ngIf="email.touched && email.invalid">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.minlength">Email should be minimum {{ email.errors.minlength.requiredLength }} characters </div>
+            <div *ngIf="email.errors.email">Email is invalid</div>
+        </div>
+        <br>
+        <input 
+          type="password" 
+          class="form-control" 
+          placeholder="Password" 
+          formControlName="password" 
+          title="Please enter your password">
+        <div class="alert alert-warning" *ngIf="password.touched && password.invalid">
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.pattern">
+                Password requires one lower case letter, one upper case letter, one digit, 6-12 length. 
+            </div> 
+            <div *ngIf="password.errors.minlength">Password should be minimum {{ password.errors.minlength.requiredLength }} characters </div>
+        </div>
+        <br>
+        <button class="btn btn-defualt" [disabled]="!form.valid">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
