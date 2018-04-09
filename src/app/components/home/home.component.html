@@ -3,9 +3,10 @@
   <h2>Oracle Certified Associate / Programmer Sample Exams :</h2>
   <p>This App is developed to help you prepare and achieve the Oracle Certification for Java.
     Start reviewing exam essentials and take a free trial test exam or sign up and discover more features of the app </p>
-  <p><a class="btn btn-primary btn-lg btn-round" routerLink="/exam" role="button"><i class="fa fa-play-circle" aria-hidden="true"></i>
+  <p><a *ngIf="!authService.isLoggedIn()" class="btn btn-primary btn-lg btn-round" routerLink="/exam" role="button"><i class="fa fa-play-circle" aria-hidden="true"></i>
     Free Exam »</a></p>
-
+    <p><a *ngIf="authService.isLoggedIn()" class="btn btn-primary btn-lg btn-round" routerLink="/exam" role="button"><i class="fa fa-play-circle" aria-hidden="true"></i>
+      Pass an exam »</a></p>
 
 </div>
 <div class="row">

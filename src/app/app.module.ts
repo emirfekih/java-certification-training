@@ -1,7 +1,8 @@
+import { RegisterService } from './service/register.service';
 import { AuthService } from './service/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { Http, HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { ExamComponent } from './components/exam/exam.component';
 import {ExamService} from "./service/exam.service";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 
 
@@ -32,6 +34,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     OcasummaryComponent,
     OcpComponent,
     ExamComponent,
+    SignUpComponent,
 
 
 
@@ -44,9 +47,10 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     AppRoutingModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule,
     NgbModule
   ],
-  providers: [ChapterService,ExamService,AuthService],
+  providers: [ChapterService,ExamService,AuthService,RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

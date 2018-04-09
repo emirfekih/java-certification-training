@@ -14,12 +14,14 @@
         <div *ngIf="invalidLogin" class="alert alert-danger">
           Invalid username and/or password
         </div>
-        <input required type="text" class="form-control" ngModel name="username" placeholder="User Name"  id="usr">
-        <input  required type="password" class="form-control" ngModel name="password" placeholder="Password"  id="pwd">
+        <input required type="text" class="form-control" ngModel name="username" #username="ngModel" placeholder="User Name"  id="usr">
+        <div class="alert alert-warning" *ngIf="username.touched && !username.valid">User Name is required</div>
+        <input  required type="password" class="form-control" ngModel name="password" #password="ngModel" placeholder="Password"  id="pwd">
+        <div class="alert alert-warning" *ngIf="password.touched && !password.valid">Password is required</div>
         <button class="btn btn-defualt" [disabled]="!f.valid">Login</button>
       </div>
       <div class="col-md-12 col-sm-12 col-xs-12 last-part">
-        <p>Not registered?<a href="#"> Create an account</a></p>
+        <p>Not registered?<a href="#" routerLink="/signup" > Create an account</a></p>
       </div>
     </div>
   </div>
