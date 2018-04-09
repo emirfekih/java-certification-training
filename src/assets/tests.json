@@ -130,6 +130,259 @@
                 "correct": false
               }
             ]
+          },
+          {
+            "questionId": 2,
+            "questionStatement": "Given : \r\n\r\npublic class MyFor3 {\r\n    public static void main(String[] args) {\r\n          int[] xx = null;\r\n          for (int ii : xx) {\r\n              System.out.println(ii);\r\n          }\r\n    } \r\n}\r\n\r\nWhat is the result ?",
+            "questionType": "Single Select",
+            "questionExplanation": null,
+            "chapter": {
+              "chapterId": 1,
+              "chapterName": "All"
+            },
+            "choices": [
+              {
+                "choiceId": 7,
+                "choiceStatement": "An exception is thrown at runtime ",
+                "correct": true
+              },
+              {
+                "choiceId": 6,
+                "choiceStatement": "Compilation fails",
+                "correct": false
+              },
+              {
+                "choiceId": 5,
+                "choiceStatement": "Null",
+                "correct": false
+              },
+              {
+                "choiceId": 8,
+                "choiceStatement": "0",
+                "correct": false
+              }
+            ]
+          },
+          {
+            "questionId": 1,
+            "questionStatement": "Which statement is true about the single abstract method of the java.util.function.Function interface ? ",
+            "questionType": "Single Select",
+            "questionExplanation": "http://winterbe.com/posts/2014/03/16/java-8-tutorial/ (functions) \r\nTo check with the pdf",
+            "chapter": {
+              "chapterId": 1,
+              "chapterName": "All"
+            },
+            "choices": [
+              {
+                "choiceId": 3,
+                "choiceStatement": "It accepts one argument and always produces a result of the same type as the argument",
+                "correct": false
+              },
+              {
+                "choiceId": 1,
+                "choiceStatement": "It accepts one argument and returns void",
+                "correct": false
+              },
+              {
+                "choiceId": 2,
+                "choiceStatement": "It accepts one argument and returns boolean",
+                "correct": false
+              },
+              {
+                "choiceId": 4,
+                "choiceStatement": "It accepts an argument and produces a result of any data type.  ",
+                "correct": true
+              }
+            ]
+          },
+          {
+            "questionId": 1,
+            "questionStatement": "Which statement is true about the single abstract method of the java.util.function.Function interface ? ",
+            "questionType": "Single Select",
+            "questionExplanation": "http://winterbe.com/posts/2014/03/16/java-8-tutorial/ (functions) \r\nTo check with the pdf",
+            "chapter": {
+              "chapterId": 1,
+              "chapterName": "All"
+            },
+            "choices": [
+              {
+                "choiceId": 3,
+                "choiceStatement": "It accepts one argument and always produces a result of the same type as the argument",
+                "correct": false
+              },
+              {
+                "choiceId": 1,
+                "choiceStatement": "It accepts one argument and returns void",
+                "correct": false
+              },
+              {
+                "choiceId": 2,
+                "choiceStatement": "It accepts one argument and returns boolean",
+                "correct": false
+              },
+              {
+                "choiceId": 4,
+                "choiceStatement": "It accepts an argument and produces a result of any data type.  ",
+                "correct": true
+              }
+            ]
+          },{
+            "questionId": 3,
+            "questionStatement": "Given the code fragment : \r\n\r\n          LocalDate valentinesDay = LocalDate.of(2015, Month.FEBRUARY, 14); \r\n          LocalDate nextYear = valentinesDay.plusYears(1); \r\n          nextYear.plusDays(15); //line n1 \r\n          System.out.println(nextYear); \r\n\r\nWhat is the result ?  ",
+            "questionType": "Multiple Select",
+            "questionExplanation": null,
+            "chapter": {
+              "chapterId": 1,
+              "chapterName": "All"
+            },
+            "choices": [
+              {
+                "choiceId": 12,
+                "choiceStatement": "A compilation error occurs at line n1 ",
+                "correct": false
+              },
+              {
+                "choiceId": 9,
+                "choiceStatement": "2016-02-14 ",
+                "correct": true
+              },
+              {
+                "choiceId": 10,
+                "choiceStatement": "A DateTimeException is thrown ",
+                "correct": false
+              },
+              {
+                "choiceId": 11,
+                "choiceStatement": "2016-02-29 ",
+                "correct": false
+              }
+            ]
+          },{
+            "questionId": 3,
+            "questionStatement": "Given the code fragment : \r\n\r\n          LocalDate valentinesDay = LocalDate.of(2015, Month.FEBRUARY, 14); \r\n          LocalDate nextYear = valentinesDay.plusYears(1); \r\n          nextYear.plusDays(15); //line n1 \r\n          System.out.println(nextYear); \r\n\r\nWhat is the result ?  ",
+            "questionType": "Multiple Select",
+            "questionExplanation": null,
+            "chapter": {
+              "chapterId": 1,
+              "chapterName": "All"
+            },
+            "choices": [
+              {
+                "choiceId": 12,
+                "choiceStatement": "A compilation error occurs at line n1 ",
+                "correct": false
+              },
+              {
+                "choiceId": 9,
+                "choiceStatement": "2016-02-14 ",
+                "correct": true
+              },
+              {
+                "choiceId": 10,
+                "choiceStatement": "A DateTimeException is thrown ",
+                "correct": false
+              },
+              {
+                "choiceId": 11,
+                "choiceStatement": "2016-02-29 ",
+                "correct": false
+              }
+            ]
+          },{
+            "questionId": 3,
+            "questionStatement": "Given the code fragment : \r\n\r\n          LocalDate valentinesDay = LocalDate.of(2015, Month.FEBRUARY, 14); \r\n          LocalDate nextYear = valentinesDay.plusYears(1); \r\n          nextYear.plusDays(15); //line n1 \r\n          System.out.println(nextYear); \r\n\r\nWhat is the result ?  ",
+            "questionType": "Multiple Select",
+            "questionExplanation": null,
+            "chapter": {
+              "chapterId": 1,
+              "chapterName": "All"
+            },
+            "choices": [
+              {
+                "choiceId": 12,
+                "choiceStatement": "A compilation error occurs at line n1 ",
+                "correct": false
+              },
+              {
+                "choiceId": 9,
+                "choiceStatement": "2016-02-14 ",
+                "correct": true
+              },
+              {
+                "choiceId": 10,
+                "choiceStatement": "A DateTimeException is thrown ",
+                "correct": false
+              },
+              {
+                "choiceId": 11,
+                "choiceStatement": "2016-02-29 ",
+                "correct": false
+              }
+            ]
+          },{
+            "questionId": 3,
+            "questionStatement": "Given the code fragment : \r\n\r\n          LocalDate valentinesDay = LocalDate.of(2015, Month.FEBRUARY, 14); \r\n          LocalDate nextYear = valentinesDay.plusYears(1); \r\n          nextYear.plusDays(15); //line n1 \r\n          System.out.println(nextYear); \r\n\r\nWhat is the result ?  ",
+            "questionType": "Multiple Select",
+            "questionExplanation": null,
+            "chapter": {
+              "chapterId": 1,
+              "chapterName": "All"
+            },
+            "choices": [
+              {
+                "choiceId": 12,
+                "choiceStatement": "A compilation error occurs at line n1 ",
+                "correct": false
+              },
+              {
+                "choiceId": 9,
+                "choiceStatement": "2016-02-14 ",
+                "correct": true
+              },
+              {
+                "choiceId": 10,
+                "choiceStatement": "A DateTimeException is thrown ",
+                "correct": false
+              },
+              {
+                "choiceId": 11,
+                "choiceStatement": "2016-02-29 ",
+                "correct": false
+              }
+            ]
+          },{
+            "questionId": 3,
+            "questionStatement": "Given the code fragment : \r\n\r\n          LocalDate valentinesDay = LocalDate.of(2015, Month.FEBRUARY, 14); \r\n          LocalDate nextYear = valentinesDay.plusYears(1); \r\n          nextYear.plusDays(15); //line n1 \r\n          System.out.println(nextYear); \r\n\r\nWhat is the result ?  ",
+            "questionType": "Multiple Select",
+            "questionExplanation": null,
+            "chapter": {
+              "chapterId": 1,
+              "chapterName": "All"
+            },
+            "choices": [
+              {
+                "choiceId": 12,
+                "choiceStatement": "A compilation error occurs at line n1 ",
+                "correct": false
+              },
+              {
+                "choiceId": 9,
+                "choiceStatement": "2016-02-14 ",
+                "correct": true
+              },
+              {
+                "choiceId": 10,
+                "choiceStatement": "A DateTimeException is thrown ",
+                "correct": false
+              },
+              {
+                "choiceId": 11,
+                "choiceStatement": "2016-02-29 ",
+                "correct": false
+              }
+            ]
           }
+
+
         ]
     }

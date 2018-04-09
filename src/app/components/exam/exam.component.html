@@ -95,7 +95,7 @@
   <div  class="row text-center">
 
        <div class="col-md-2 curseur" *ngFor="let question of test.questions; let i = index" >
-         <div (click)="goTo(i)" [ngClass]="question.review ? 'p-2 mb-2 bg-primary rounded': !isAnswered(question) ? 'p-2 mb-2 bg-warning rounded':'p-2 mb-2 bg-secondary rounded' " ngbTooltip="Go To Question" placement="top" >
+         <div (click)="goTo(i)" [ngClass]="question.review ? 'p-2 mb-3 bg-primary rounded': !isAnswered(question) ? 'p-2 mb-3 bg-warning rounded':'p-2 mb-3 bg-secondary rounded' " ngbTooltip="Go To Question" placement="top" >
            Question {{i+1}}
          </div>
        </div>
@@ -104,8 +104,8 @@
   <hr>
 <div class="row"><ul>
   <li><span class="greybox"></span> &nbsp; Answered Question  </li>
-  <li><span class="bluebox"></span> &nbsp; Unanswered Questions</li>
-  <li><span class="redbox"></span> &nbsp; Marked Questions</li>
+  <li><span class="bluebox"></span> &nbsp; Marked Questions </li>
+  <li><span class="redbox"></span> &nbsp; Unanswered Questions </li>
 </ul></div>
 
 
