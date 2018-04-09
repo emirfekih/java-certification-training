@@ -1,40 +1,50 @@
 <div class="jumbotron" id="jumb">
-  <div *ngFor="let question of filteredQuestions">
 
-    <div class="row justify-content-between">
-      <h5><div class="p-1 font-weight-bold"(click)="reviewQuestion(question)"><i class="fa fa-flag" rel="tooltip" title="Review question" [style.color] = "question.review ? '#007BFF' : 'transparent'"></i>&nbsp; &nbsp; Question
-        {{pager.index+1}} of {{pager.count}} :
-      </div></h5>
-      <div class="p-1"></div>
-      <div class="p-1 font-weight-bold">00:00</div>
+<div *ngIf="mode==='test'">
+  <div *ngFor="let question of filtered">
+    <div class="d-flex">
+      <h5><div class="p-1 font-weight-bold"(click)="reviewQuestion(question)"><i class="fa fa-flag" ngbTooltip="Review question" [style.color] = "question.review ? '#007BFF' : 'transparent'"></i>&nbsp; &nbsp; Question
+        {{pager.index+1}} of {{pager.count}} : &nbsp; &nbsp; </div></h5>
+      <div class="p-1 h-25 btn btn-outline-secondary btn-sm" (click)="showAnswer(question)"> Show answer</div>
+      <div class="ml-auto p-1 font-weight-bold" [ngClass]="countDown >=60 || countDown ===0 ? 'p-1 font-weight-bold':'p-1 font-weight-bold text-danger blink_me'">{{getHours(countDown)}}h {{getMinutes(countDown)}}m {{getSeconds(countDown)}}s</div>
     </div>
 
-
     <hr>
-    <h5><div class="row ">
-      {{question.questionStatement}}
-      <br>
-    </div></h5>
+
+    <div class="row ">
+      <div class="col-md-12"><h5>
+        {{question.questionStatement}}
+        <br>
+      </h5>
+      </div>
+    </div>
+
     <br>
 
+    <!--
+       MULTIPLE SELECT QUESTIONS
+       -->
     <div class="row" *ngIf=" question.questionType === 'Multiple Select'   ">
-      <div class="col-md-8">
+      <div class="col-md-12">
         <div class="custom-control custom-checkbox " *ngFor="let choice of question.choices">
 
-            <input type="checkbox" class="custom-control-input" [attr.id]="'customCheck'+choice.choiceId">
-            <label class="custom-control-label" [attr.for]="'customCheck'+choice.choiceId">{{choice.choiceStatement}}</label>
+          <input type="checkbox" class="custom-control-input" [attr.id]="'customCheck'+choice.choiceId" [(ngModel)]="choice.selected">
+          <label class="custom-control-label  p-1 mb-1" [attr.for]="'customCheck'+choice.choiceId" [ngClass]="choice.correct && question.showAnswer ?'bg-success rounded': !choice.correct && question.showAnswer ? 'bg-danger rounded' : ''" >{{choice.choiceStatement}}</label>
 
         </div>
       </div>
-      <div class="col-md-8 "></div>
+
     </div>
 
 
+    <!--
+       RADIO QUESTIONS
+       -->
     <div class="row" *ngIf=" question.questionType === 'Single Select'   ">
       <div class="col-md-8">
-        <div class="custom-control custom-radio" *ngFor="let choice of question.choices">
-          <input type="radio" [attr.id]="'customRadio1'+choice.choiceId" name="customRadio" class="custom-control-input">
-          <label class="custom-control-label" [attr.for]="'customRadio1'+choice.choiceId">{{choice.choiceStatement}}</label>
+        <div class="custom-control custom-radio" *ngFor="let choice of question.choices ; let rindex = index">
+          <input type="radio" [attr.id]="'customRadio1'+choice.choiceId" name="customRadio" class="custom-control-input" [checked]="choice.selected" [value]="choice.selected" (change)="onSelectionChange(question,choice)">
+          <label class="custom-control-label p-1 mb-1" [attr.for]="'customRadio1'+choice.choiceId" [ngClass]="choice.correct && question.showAnswer ?'bg-success rounded': !choice.correct && question.showAnswer ? 'bg-danger rounded' : ''">{{choice.choiceStatement}}</label>
         </div>
       </div>
       <div class="col-md-8 "></div>
@@ -47,37 +57,90 @@
 
     <div class="row justify-content-between">
       <div class="col-md-4">
-        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-          <button type="button" class="btn btn-secondary" (click)="goTo(pager.index - 1)">Previous</button>
-          <button type="button" class="btn btn-secondary" (click)="goTo(pager.index + 1)">Next</button>
-
-          <div class="btn-group" role="group">
-            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </button>
-            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-              <a class="dropdown-item" href="#">Dropdown link</a>
-              <a class="dropdown-item" href="#">Dropdown link</a>
-            </div>
-          </div>
+        <div class="btn-group" role="group" aria-label="Previous and next button group">
+          <button type="button" class="btn btn-outline-secondary font-weight-bold" [disabled]="countDown==0" (click)="goTo(pager.index - 1)">Previous</button>
+          <button type="button" class="btn btn-outline-secondary font-weight-bold rounded" [disabled]="countDown==0" (click)="goTo(pager.index + 1)">Next</button>
+          &nbsp;&nbsp;
+          <select class="form-control" id="gender1" ngbTooltip="choose view" placement="right" [(ngModel)]="mode">
+            <option value="test">Test </option>
+            <option value="marked">Marked </option>
+          </select>
         </div>
+         &nbsp;&nbsp;
+
       </div>
       <div class="col-md-4">
         <div class="float-right">
-          <div class="btn-group" role="group" aria-label="Button group">
-
-            <button type="button" class="btn btn-secondary">Pause</button>
-            <button type="button" class="btn btn-secondary">Save Session</button>
-            <button type="button" class="btn btn-secondary">Submit</button>
-          </div>
-
-
+            <button type="button" class="btn btn-outline-danger font-weight-bold">Pause</button>
+            <button type="button" class="btn btn-outline-secondary">Save Session</button>
+            <button type="button" class="btn btn-outline-secondary" (click)="open(endConfirmation)">End Test</button>
         </div>
+
+
       </div>
     </div>
-
   </div>
+
+</div>
+
+
+<div *ngIf="mode==='marked'">
+  <div class="row justify-content-between">
+    <div class="p-1 "></div>
+    <div class="p-1 "><h4>{{test.testType}} Test : {{test.testName}}</h4></div>
+
+    <div class="p-1 font-weight-bold" [ngClass]="countDown >=60 || countDown ===0 ? 'p-1 font-weight-bold':'p-1 font-weight-bold text-danger blink_me'">{{getHours(countDown)}}h {{getMinutes(countDown)}}m {{getSeconds(countDown)}}s</div>
+  </div>
+  <hr>
+  <div  class="row text-center">
+
+       <div class="col-md-2 curseur" *ngFor="let question of test.questions; let i = index" >
+         <div (click)="goTo(i)" [ngClass]="question.review ? 'p-2 mb-2 bg-primary rounded': !isAnswered(question) ? 'p-2 mb-2 bg-warning rounded':'p-2 mb-2 bg-secondary rounded' " ngbTooltip="Go To Question" placement="top" >
+           Question {{i+1}}
+         </div>
+       </div>
+
+</div>
+  <hr>
+<div class="row"><ul>
+  <li><span class="greybox"></span> &nbsp; Answered Question  </li>
+  <li><span class="bluebox"></span> &nbsp; Unanswered Questions</li>
+  <li><span class="redbox"></span> &nbsp; Marked Questions</li>
+</ul></div>
 
 
 </div>
+
+
+</div>
+<!--
+PROGRESS BAR
+-->
+
+<div class="progress" [style.height.px]="40">
+  <div [ngClass]="answeredQuestions < pager.count ? 'progress-bar progress-bar-striped progress-bar-animated ':'progress-bar progress-bar-striped progress-bar-animated bg-success' " role="progressbar" [style.width]="((answeredQuestions)/pager.count)*100 + '%'"  [attr.aria.valuenow]="pager.index" [attr.aria-valuemin]="0" [attr.aria-valuemax]="pager.count" ngbTooltip="% Of Answered Questions" placement="bottom" >
+    {{(answeredQuestions*100)/pager.count}} %
+  </div>
+</div>
+
+
+
+
+<!--
+modal content
+-->
+
+<ng-template #endConfirmation let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h6 class="modal-title">Confirmation</h6>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+<h5>End exam ?</h5>  </div>
+  <div class="modal-footer justify-content-center">
+    <button type="button" class="btn btn-outline-success" >Yes</button>
+    <button type="button" class="btn btn-outline-danger" (click)="c('Close click')">No</button>
+  </div>
+</ng-template>

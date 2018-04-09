@@ -12,6 +12,7 @@ export class Question{
 
   answered:boolean;
   review:boolean;
+  showAnswer:boolean;
 
 
 
@@ -26,6 +27,8 @@ export class Question{
     this.choices=[];
     data.choices.forEach(x => this.choices.push(new Choice(x)));
     this.review=false;
+    this.answered=false;
+    this.showAnswer=false;
 
 
 this.chapter=new ChapterDTO(data.chapter);

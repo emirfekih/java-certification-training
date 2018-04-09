@@ -16,15 +16,16 @@ export class OcpComponent implements OnInit {
   ngOnInit() {
 
     this.getChapters();
-    
-    //for pagination
-    this.viewChapters=this.chapters.slice(0,5);
 
     //for disabling the previous/next button
     this.actualPage=true;
   }
 
-  getChapters(){this.chapterService.getChapters("assets/ocp.json").subscribe(data => this.chapters=data)}
+  getChapters(){this.chapterService.getChapters("assets/ocp.json").subscribe(data => {this.chapters=data;
+  this.viewChapters=this.chapters.slice(0,5);});
+
+
+  }
 
   pass(chapter:Chapter){
     chapter.passed=!chapter.passed;

@@ -13,6 +13,7 @@ export class Choice {
     this.choiceId=data.choiceId;
     this.choiceStatement=data.choiceStatement;
     this.correct=data.correct;
+    this.selected=false;
 
   }
 }

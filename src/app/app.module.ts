@@ -16,6 +16,10 @@ import {ChapterService} from "./service/chapter.service";
 import {HttpClientModule} from "@angular/common/http";
 import { ExamComponent } from './components/exam/exam.component';
 import {ExamService} from "./service/exam.service";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+
+
+
 
 @NgModule({
   declarations: [
@@ -31,13 +35,16 @@ import {ExamService} from "./service/exam.service";
 
 
 
+
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    NgbModule
   ],
   providers: [ChapterService,ExamService,AuthService],
   bootstrap: [AppComponent]
