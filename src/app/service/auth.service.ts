@@ -10,7 +10,7 @@ export class AuthService {
    }
 
    login(credentials){
-     return this.http.post('http://localhost:8080/auth', credentials)
+     return this.http.post('https://localhost:8443/auth', credentials)
       .map(response => {
         let result = response.json();
         if(result && result.token ){
@@ -27,6 +27,6 @@ export class AuthService {
 
    isLoggedIn(){
       return tokenNotExpired();
-    
+
    }
 }

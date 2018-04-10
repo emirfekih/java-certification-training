@@ -1,0 +1,192 @@
+{
+    "testId": 1,
+    "testName": "1ZO-809",
+    "testType": "OCP",
+    "questions": [
+        {
+            "questionId": 4,
+            "questionHeader": "Given the code fragment :",
+            "questionCode": "List<Integer> list1 = Arrays.asList(10, 20);\r\nList<Integer> list2 = Arrays.asList(15, 30);\r\n//line n1",
+            "questionStatement": "Which code fragment, when inserted at line n1, prints 10 20 15 30 ?",
+            "questionType": 1,
+            "questionExplanation": null,
+            "chapter": {
+                "chapterId": 1,
+                "chapterName": "All chapters"
+            },
+            "choices": [
+                {
+                    "choiceId": 16,
+                    "choiceStatement": "Stream.of(list1, list2)\r\n.flatMap(list -> list.intStream())\r\n.forEach(s -> System.out.print(s + \" \")); ",
+                    "correct": false
+                },
+                {
+                    "choiceId": 18,
+                    "choiceStatement": "Stream.of(list1, list2)\r\n.flatMapToInt(list -> list.stream())\r\n.forEach(s -> System.out.print(s + \" \"));",
+                    "correct": false
+                },
+                {
+                    "choiceId": 17,
+                    "choiceStatement": "list1.stream() \r\n.flatMap(list2.stream().flatMap(e1 -> e1.stream())\r\n.forEach(s -> System.out.println(s + \" \")); ",
+                    "correct": false
+                },
+                {
+                    "choiceId": 15,
+                    "choiceStatement": "Stream.of(list1, list2)\r\n.flatMap(list -> list.stream())\r\n.forEach(s -> System.out.print(s + \" \")); ",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "questionId": 2,
+            "questionHeader": "Given the code fragment :",
+            "questionCode": "List<String> str = Arrays.asList (\"my\", \"pen\", \"is\", \"your', \"pen\");\r\nPredicate<String> test = s -> { \r\n                                 int i = 0;\r\n                                 result = s.contains (\"pen\");\r\n                                 System.out.print(i++) + \":\");\r\n                                 return result; \r\n                              };\r\nstr.stream().filter(test).findFirst().ifPresent(System.out ::print); ",
+            "questionStatement": null,
+            "questionType": 1,
+            "questionExplanation": "The local variable result is never created.",
+            "chapter": {
+                "chapterId": 1,
+                "chapterName": "All chapters"
+            },
+            "choices": [
+                {
+                    "choiceId": 5,
+                    "choiceStatement": " 0 : 0 : pen ",
+                    "correct": false
+                },
+                {
+                    "choiceId": 7,
+                    "choiceStatement": " 0 : 0 : 0 : 0 : 0 : pen ",
+                    "correct": false
+                },
+                {
+                    "choiceId": 8,
+                    "choiceStatement": " 0 : 1 : 2 : 3 : 4 :  ",
+                    "correct": false
+                },
+                {
+                    "choiceId": 6,
+                    "choiceStatement": " 0 : 1 : pen ",
+                    "correct": false
+                },
+                {
+                    "choiceId": 9,
+                    "choiceStatement": " A compilation error occurs ",
+                    "correct": true
+                }
+            ]
+        },
+        {
+            "questionId": 5,
+            "questionHeader": "Given :",
+            "questionCode": "public class ScopeTest { \r\n       int j, k;\r\n\r\n       public static void main(String[] args) { \r\n              new ScopeTest().doStuff(); \r\n       } \r\n\r\n       void doStuff() { \r\n           int x = 5; \r\n           DoStuff2();\r\n           System.out.println(\"x\");\r\n        }\r\n\r\n        void doStuff2() {\r\n             Int y = 7; \r\n             System.out.println(\"y\"); \r\n             for (int z = 0; z < 5; z++) { \r\n                      System.out.println(\"z\"); \r\n                      System.out.println(\"y\"); \r\n             }\r\n         }\r\n}",
+            "questionStatement": "Which two items are fields?",
+            "questionType": 2,
+            "questionExplanation": null,
+            "chapter": {
+                "chapterId": 2,
+                "chapterName": "Test"
+            },
+            "choices": [
+                {
+                    "choiceId": 22,
+                    "choiceStatement": "y",
+                    "correct": false
+                },
+                {
+                    "choiceId": 23,
+                    "choiceStatement": "z",
+                    "correct": false
+                },
+                {
+                    "choiceId": 19,
+                    "choiceStatement": "j",
+                    "correct": true
+                },
+                {
+                    "choiceId": 20,
+                    "choiceStatement": "k",
+                    "correct": true
+                },
+                {
+                    "choiceId": 21,
+                    "choiceStatement": "x",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "questionId": 1,
+            "questionHeader": "Given the code fragment : ",
+            "questionCode": "public static void main (String [ ] args) throws IOException { \r\n         BufferedReader br = new BufferedReader (new InputStreamReader (System.in));\r\n         System.out.print (\"Enter GDP: \"); //line 1 \r\n}",
+            "questionStatement": "Which code fragment, when inserted at line 1, enables the code to read the GDP from the user? ",
+            "questionType": 1,
+            "questionExplanation": null,
+            "chapter": {
+                "chapterId": 1,
+                "chapterName": "All chapters"
+            },
+            "choices": [
+                {
+                    "choiceId": 1,
+                    "choiceStatement": " int GDP = Integer.parseInt (br.readLine()); ",
+                    "correct": true
+                },
+                {
+                    "choiceId": 4,
+                    "choiceStatement": " int GDP = Integer.parseInt (br.next()); ",
+                    "correct": false
+                },
+                {
+                    "choiceId": 2,
+                    "choiceStatement": " int GDP = br.read(); ",
+                    "correct": false
+                },
+                {
+                    "choiceId": 3,
+                    "choiceStatement": " int GDP = br.nextInt(); ",
+                    "correct": false
+                }
+            ]
+        },
+        {
+            "questionId": 3,
+            "questionHeader": "Given :",
+            "questionCode": "public class Canvas implements Drawable { \r\n            public void draw () { } \r\n} \r\n\r\npublic abstract class Board extends Canvas { } \r\n\r\npublic class Paper extends Canvas { \r\n            protected void draw (int color) { } \r\n}\r\n\r\npublic class Frame extends Canvas implements Drawable { \r\n            public void resize () { } \r\n}\r\n\r\npublic interface Drawable {\r\n            public abstract void draw ();\r\n}\r\n",
+            "questionStatement": "Which statement is true? ",
+            "questionType": 1,
+            "questionExplanation": null,
+            "chapter": {
+                "chapterId": 1,
+                "chapterName": "All chapters"
+            },
+            "choices": [
+                {
+                    "choiceId": 10,
+                    "choiceStatement": " Board does not compile.",
+                    "correct": false
+                },
+                {
+                    "choiceId": 13,
+                    "choiceStatement": " Drawable does not compile.",
+                    "correct": false
+                },
+                {
+                    "choiceId": 12,
+                    "choiceStatement": " Frame does not compile.",
+                    "correct": false
+                },
+                {
+                    "choiceId": 14,
+                    "choiceStatement": " All classes compile successfully.",
+                    "correct": true
+                },
+                {
+                    "choiceId": 11,
+                    "choiceStatement": " Paper does not compile.",
+                    "correct": false
+                }
+            ]
+        }
+    ]
+}

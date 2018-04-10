@@ -7,8 +7,8 @@ export class RegisterService {
   constructor(private http:Http) { }
 
   signUp(params){
-    return this.http.post('http://localhost:8080/addUser', params)
+    return this.http.post('https://localhost:8443/addUser', params)
       .map(response => response);
   };
-  
-} 
+
+}

@@ -4,8 +4,10 @@ import {ChapterDTO} from "./ChapterDTO";
 
 export class Question{
   questionId:number;
+  questionHeader:string;
+  questionCode:string;
   questionStatement:string;
-  questionType:string;
+  questionType:number;
   questionExplanation:string;
   chapter:ChapterDTO;
   choices:Choice[];
@@ -21,6 +23,8 @@ export class Question{
 
 
     this.questionId=data.questionId;
+    this.questionHeader=data.questionHeader;
+    this.questionCode= data.questionCode;
     this.questionStatement=data.questionStatement;
     this.questionType=data.questionType;
     this.questionExplanation=data.questionExplanation;
