@@ -1,12 +1,29 @@
 <div class="jumbotron" id="jumb">
+  <div class="d-flex">
+    <div class="ml-auto p-1 h-25 btn btn-outline-dark btn-sm" ngbTooltip="resume timer" placement="top" id="resume"(click)="timerEnable()"><i class="fa fa-play fa-xs"></i></div>
+    &nbsp;
+    <div class=" p-1 h-25 btn btn-outline-dark btn-sm" ngbTooltip="pause timer" placement="top" id="pause" (click)="timerDisable()"> <i class="fa fa-pause fa-xs"></i></div>
 
-<div *ngIf="mode==='test'">
+  </div>
+
+  <div *ngIf="mode==='test'">
   <div *ngFor="let question of filtered">
     <div class="d-flex">
       <h5><div class="p-1 font-weight-bold"(click)="reviewQuestion(question)"><i class="fa fa-flag" ngbTooltip="Review question" [style.color] = "question.review ? '#007BFF' : 'transparent'"></i>&nbsp; &nbsp; Question
         {{pager.index+1}} of {{pager.count}} : &nbsp; &nbsp; </div></h5>
+
       <div class="p-1 h-25 btn btn-outline-secondary btn-sm" (click)="showAnswer(question)"> Show answer</div>
-      <div class="ml-auto p-1 font-weight-bold" [ngClass]="countDown >=60 || countDown ===0 ? 'p-1 font-weight-bold':'p-1 font-weight-bold text-danger blink_me'">{{getHours(countDown)}}h {{getMinutes(countDown)}}m {{getSeconds(countDown)}}s</div>
+
+
+
+
+
+
+      <div class="ml-auto p-1 font-weight-bold" [ngClass]="countDown >=60 || countDown ===0 ? 'p-1 font-weight-bold':'p-1 font-weight-bold text-danger blink_me'">&nbsp; &nbsp;{{getHours(countDown)}}h {{getMinutes(countDown)}}m {{getSeconds(countDown)}}s</div>
+
+
+
+
     </div>
 
     <hr>
@@ -38,7 +55,7 @@
         <div class="custom-control custom-checkbox " *ngFor="let choice of question.choices">
 
           <input type="checkbox" class="custom-control-input" [attr.id]="'customCheck'+choice.choiceId" [(ngModel)]="choice.selected">
-          <label class="custom-control-label  p-1 mb-1" [attr.for]="'customCheck'+choice.choiceId" [ngClass]="choice.correct && question.showAnswer ?'bg-success rounded': !choice.correct && question.showAnswer ? 'bg-danger rounded' : ''" >{{choice.choiceStatement}}</label>
+          <label class="custom-control-label  p-1 mb-1" [attr.for]="'customCheck'+choice.choiceId" [ngClass]="choice.correct && question.showAnswer ?'bg-success rounded': ''" >{{choice.choiceStatement}}</label>
 
         </div>
       </div>
@@ -53,7 +70,7 @@
       <div class="col-md-8">
         <div class="custom-control custom-radio" *ngFor="let choice of question.choices ; let rindex = index">
           <input type="radio" [attr.id]="'customRadio1'+choice.choiceId" name="customRadio" class="custom-control-input" [checked]="choice.selected" [value]="choice.selected" (change)="onSelectionChange(question,choice)">
-          <label class="custom-control-label p-1 mb-1" [attr.for]="'customRadio1'+choice.choiceId" [ngClass]="choice.correct && question.showAnswer ?'bg-success rounded': !choice.correct && question.showAnswer ? 'bg-danger rounded' : ''">{{choice.choiceStatement}}</label>
+          <label class="custom-control-label p-1 mb-1" [attr.for]="'customRadio1'+choice.choiceId" [ngClass]="choice.correct && question.showAnswer ?'bg-success rounded':''">{{choice.choiceStatement}}</label>
         </div>
       </div>
       <div class="col-md-8 "></div>
@@ -67,8 +84,8 @@
     <div class="row justify-content-between">
       <div class="col-md-4">
         <div class="btn-group" role="group" aria-label="Previous and next button group">
-          <button type="button" class="btn btn-outline-secondary font-weight-bold" [disabled]="countDown==0" (click)="goTo(pager.index - 1)">Previous</button>
-          <button type="button" class="btn btn-outline-secondary font-weight-bold rounded" [disabled]="countDown==0" (click)="goTo(pager.index + 1)">Next</button>
+          <button type="button" class="btn btn-outline-secondary font-weight-bold" [disabled]="countDown==0 || timerOn==false" (click)="goTo(pager.index - 1)">Previous</button>
+          <button type="button" class="btn btn-outline-secondary font-weight-bold rounded" [disabled]="countDown==0 || timerOn==false" (click)="goTo(pager.index + 1)">Next</button>
           &nbsp;&nbsp;
           <select class="form-control" id="gender1" ngbTooltip="choose view" placement="right" [(ngModel)]="mode">
             <option value="test">Test </option>
@@ -80,8 +97,7 @@
       </div>
       <div class="col-md-4">
         <div class="float-right">
-            <button type="button" class="btn btn-outline-danger font-weight-bold">Pause</button>
-            <button type="button" class="btn btn-outline-secondary">Save Session</button>
+            <button type="button" class="btn btn-outline-secondary" >Save Session</button>
             <button type="button" class="btn btn-outline-secondary" (click)="open(endConfirmation)">End Test</button>
         </div>
 

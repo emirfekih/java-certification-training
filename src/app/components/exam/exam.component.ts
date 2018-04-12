@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import {Component, OnInit, NgZone, ElementRef, ViewChild} from '@angular/core';
 import {ExamService} from "../../service/exam.service";
 import {Test} from "../../model/Test";
 import {Chapter} from "../../model/Chapter";
@@ -10,6 +10,7 @@ import 'rxjs/add/operator/finally';
 import 'rxjs/add/operator/takeWhile';
 import {Choice} from "../../model/Choice";
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {TimerService} from "../../service/timer.service";
 
 
 
@@ -19,13 +20,17 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './exam.component.html',
   styleUrls: ['./exam.component.css']
 })
+
 export class ExamComponent implements OnInit {
+
+
 
   test:Test= new Test(null);
   mode:string;
   filtered:any;
   answeredQuestions:number=0;
-  countDown:number = 360;
+  countDown:number = 1800;
+  timerOn:boolean = true;
 
   closeResult:any;
 
@@ -35,23 +40,28 @@ export class ExamComponent implements OnInit {
     count: 1
   };
 
-  private myobs = Observable.timer(1000,1000).takeWhile(()=>this.countDown>0).map(m => m);
 
-  constructor(private examService:ExamService,private modalService:NgbModal) { }
+  /*Old TIMER
+  private myobs = Observable.timer(0,1000).takeWhile(()=>this.countDown>0).map(m => m);
+  this.subscription=this.myobs.subscribe(x => this.countDown--);
+ */
+  constructor(private examService:ExamService,private modalService:NgbModal, private timerService:TimerService) { }
 
   ngOnInit() {
 
 
-
-    this.myobs.subscribe(x => this.countDown--);
     this.mode='test';
+    this.timerService.getTimer(this.countDown).subscribe(x=> this.countDown=x);
     this.loadTest();
 
   }
 
-  getSeconds(t){
-    return Math.floor( (t) % 60 );
+timerDisable(){this.timerOn=false}
+  timerEnable(){
+    this.timerOn=true;
+
   }
+
   loadTest(){
     this.examService.getExam("assets/tests.json").subscribe(data => {this.test=new Test(data);
     this.pager.count=this.test.questions.length;
@@ -95,13 +105,6 @@ export class ExamComponent implements OnInit {
   }
 
 
-  getHours(t){
-    return Math.floor( (t/(60*60)) % 24);
-  }
-
-  getMinutes(t){
-    return Math.floor( (t/60) % 60 );
-  }
 
   onSelectionChange(question:Question,choice:Choice){
     question.choices.forEach(x => x.selected =(x.choiceId === choice.choiceId))
@@ -140,6 +143,19 @@ export class ExamComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+
+
+  getHours(t){
+    return Math.floor( (t/(60*60)) % 24);
+  }
+
+  getMinutes(t){
+    return Math.floor( (t/60) % 60 );
+  }
+
+  getSeconds(t){
+    return Math.floor( (t) % 60 );
   }
 
 

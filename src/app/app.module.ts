@@ -19,6 +19,7 @@ import { ExamComponent } from './components/exam/exam.component';
 import {ExamService} from "./service/exam.service";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import {TimerService} from "./service/timer.service";
 
 
 
@@ -50,7 +51,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [ChapterService,ExamService,AuthService,RegisterService],
+  providers: [ChapterService,ExamService,AuthService,RegisterService,TimerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
