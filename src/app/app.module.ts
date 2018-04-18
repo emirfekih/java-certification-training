@@ -20,6 +20,10 @@ import {ExamService} from "./service/exam.service";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import {TimerService} from "./service/timer.service";
+import { ResultComponent } from './result/result.component';
+import {NgCircleProgressModule} from "ng-circle-progress";
+import {ChartModule} from 'primeng/components/chart/chart';
+
 
 
 
@@ -36,6 +40,8 @@ import {TimerService} from "./service/timer.service";
     OcpComponent,
     ExamComponent,
     SignUpComponent,
+    ResultComponent,
+
 
 
 
@@ -49,7 +55,9 @@ import {TimerService} from "./service/timer.service";
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    NgCircleProgressModule,
+    ChartModule
   ],
   providers: [ChapterService,ExamService,AuthService,RegisterService,TimerService],
   bootstrap: [AppComponent]

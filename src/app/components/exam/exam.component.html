@@ -1,13 +1,17 @@
 <div class="jumbotron" id="jumb">
-  <div class="d-flex">
-    <div class="ml-auto p-1 h-25 btn btn-outline-dark btn-sm" ngbTooltip="resume timer" placement="top" id="resume"(click)="timerEnable()"><i class="fa fa-play fa-xs"></i></div>
-    &nbsp;
-    <div class=" p-1 h-25 btn btn-outline-dark btn-sm" ngbTooltip="pause timer" placement="top" id="pause" (click)="timerDisable()"> <i class="fa fa-pause fa-xs"></i></div>
 
-  </div>
+<!--QUIZ MODE-->
+  <div [hidden]="mode!=='test'">
+    <div class="d-flex">
+      <div class="ml-auto p-1 h-25 btn btn-outline-dark btn-sm" ngbTooltip="resume timer" placement="top" id="resume"(click)="timerEnable()"><i class="fa fa-play fa-xs"></i></div>
+      &nbsp;
+      <div class=" p-1 h-25 btn btn-outline-dark btn-sm" ngbTooltip="pause timer" placement="top" id="pause" (click)="timerDisable()"> <i class="fa fa-pause fa-xs"></i></div>
 
-  <div *ngIf="mode==='test'">
-  <div *ngFor="let question of filtered">
+      <div class=" p-1 font-weight-bold" [ngClass]="countDown >=60 || countDown ===0 ? 'p-1 font-weight-bold':'p-1 font-weight-bold text-danger blink_me'">&nbsp; &nbsp;{{getHours(countDown)}}h {{getMinutes(countDown)}}m {{getSeconds(countDown)}}s</div>
+
+    </div>
+
+    <div *ngFor="let question of filtered">
     <div class="d-flex">
       <h5><div class="p-1 font-weight-bold"(click)="reviewQuestion(question)"><i class="fa fa-flag" ngbTooltip="Review question" [style.color] = "question.review ? '#007BFF' : 'transparent'"></i>&nbsp; &nbsp; Question
         {{pager.index+1}} of {{pager.count}} : &nbsp; &nbsp; </div></h5>
@@ -15,11 +19,6 @@
       <div class="p-1 h-25 btn btn-outline-secondary btn-sm" (click)="showAnswer(question)"> Show answer</div>
 
 
-
-
-
-
-      <div class="ml-auto p-1 font-weight-bold" [ngClass]="countDown >=60 || countDown ===0 ? 'p-1 font-weight-bold':'p-1 font-weight-bold text-danger blink_me'">&nbsp; &nbsp;{{getHours(countDown)}}h {{getMinutes(countDown)}}m {{getSeconds(countDown)}}s</div>
 
 
 
@@ -89,7 +88,7 @@
           &nbsp;&nbsp;
           <select class="form-control" id="gender1" ngbTooltip="choose view" placement="right" [(ngModel)]="mode">
             <option value="test">Test </option>
-            <option value="marked">Marked </option>
+            <option value="review">Review </option>
           </select>
         </div>
          &nbsp;&nbsp;
@@ -108,14 +107,15 @@
 
 </div>
 
+  <!--END QUIZ MODE-->
 
-<div *ngIf="mode==='marked'">
-  <div class="row justify-content-between">
-    <div class="p-1 "></div>
+<!--REVIEW MODE-->
+<div [hidden]="mode!=='review'">
+  <div class="d-flex">
     <div class="p-1 "><h4>{{test.testType}} Test : {{test.testName}}</h4></div>
 
-    <div class="p-1 font-weight-bold" [ngClass]="countDown >=60 || countDown ===0 ? 'p-1 font-weight-bold':'p-1 font-weight-bold text-danger blink_me'">{{getHours(countDown)}}h {{getMinutes(countDown)}}m {{getSeconds(countDown)}}s</div>
   </div>
+
   <hr>
   <div  class="row text-center">
 
@@ -127,24 +127,91 @@
 
 </div>
   <hr>
-<div class="row"><ul>
-  <li><span class="greybox"></span> &nbsp; Answered Question  </li>
-  <li><span class="bluebox"></span> &nbsp; Marked Questions </li>
-  <li><span class="redbox"></span> &nbsp; Unanswered Questions </li>
-</ul></div>
+<div class="row justify-content-between">
+  <div class="col-md-8"><ul>
+    <li><span class="greybox"></span> &nbsp; Answered Question  </li>
+    <li><span class="bluebox"></span> &nbsp; Marked Questions </li>
+    <li><span class="redbox"></span> &nbsp; Unanswered Questions </li>
+  </ul></div>
+    <div class="col-md-4">
+      <div class="float-right">
+        <button type="button" class="btn btn-outline-secondary" >Save Session</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="open(endConfirmation)">End Test</button>
+      </div>
+  </div>
+
+
+  </div>
 
 
 </div>
+  <!--END REVIEW MODE-->
 
+
+<!--RESULT MODE -->
+  <div *ngIf="mode==='ended'">
+    <div class="row justify-content-between">
+      <div class="col-md-4"> <h4>{{test.testType}} {{test.testName}} result : </h4> </div>
+      <div class="col-md-4 h-25" align="center" [ngClass]="testResult==='Congratulations'? 'alert alert-success ': testResult==='Failed' ? 'alert alert-danger':''">{{testResult}}</div>
+      <div class="col-md-4"></div>
+     </div>
+    <hr>
+    <div class="row justify-content-between">
+
+      <div class="p-2 mb-auto"><h5>Elapsed time: </h5>{{getHours(elapsedTime)}}h {{getMinutes(elapsedTime)}}m {{getSeconds(elapsedTime)}}s <br> <h5>Required Score :</h5> xxx.xx %  <br>  <h5>Wrong Answers:</h5> {{pager.count-correctAnswers}}/{{pager.count}}   </div>
+      <div class="p-2 mb-auto" *ngIf="testResult==='Failed'"><circle-progress
+        [showSubtitle] = false
+        [backgroundPadding] = 10
+        [percent]="progressScore"
+        [radius]="120"
+        [outerStrokeWidth]="20"
+        [innerStrokeWidth]="8"
+        [outerStrokeColor]="'#c02709'"
+        [innerStrokeColor]="'#e5bdc2'"
+        [animation]="true"
+        [animationDuration]="1000"
+        [maxPercent] = 100
+        [titleFontSize] = 50
+        [unitsFontSize] = 20
+
+      ></circle-progress></div>
+
+      <div class="p-2 mb-auto" *ngIf="testResult==='Congratulations'"><circle-progress
+        [showSubtitle] = false
+        [backgroundPadding] = 10
+        [percent]="progressScore"
+        [radius]="120"
+        [outerStrokeWidth]="20"
+        [innerStrokeWidth]="8"
+        [outerStrokeColor]="'#78C000'"
+        [innerStrokeColor]="'#C7E596'"
+        [animation]="true"
+        [animationDuration]="1000"
+        [maxPercent] = 100
+        [titleFontSize] = 50
+        [unitsFontSize] = 20
+
+
+      ></circle-progress></div>
+
+      <div class="p-2 mb-auto"><p-chart type="bar" [data]="barData" [options]="barChartOptions" [width]="400" [height]="300" [responsive]="false" ></p-chart>
+      </div>
+    </div>
+
+    <div class="btn btn-outline-success font-weight-bold" >Submit</div>
+
+
+
+  </div>
 
 </div>
 <!--
 PROGRESS BAR
 -->
 
-<div class="progress" [style.height.px]="40">
+<div *ngIf="answeredQuestions>0 && mode!='ended'" class="progress animated fadeInLeft" [style.height.px]="40">
   <div [ngClass]="answeredQuestions < pager.count ? 'progress-bar progress-bar-striped progress-bar-animated ':'progress-bar progress-bar-striped progress-bar-animated bg-success' " role="progressbar" [style.width]="((answeredQuestions)/pager.count)*100 + '%'"  [attr.aria.valuenow]="pager.index" [attr.aria-valuemin]="0" [attr.aria-valuemax]="pager.count" ngbTooltip="% Of Answered Questions" placement="bottom" >
-    {{(answeredQuestions*100)/pager.count}} %
+    {{((answeredQuestions*100)/pager.count).toPrecision(3)}} %
   </div>
 </div>
 
@@ -163,9 +230,16 @@ modal content
     </button>
   </div>
   <div class="modal-body">
-<h5>End exam ?</h5>  </div>
+    <div *ngIf="answeredQuestions< pager.count" class="alert alert-danger">You have questions that are not answered. If you continue, they will be considered as wrong questions.</div>
+<h5>Are you sure you want to end the exam ?</h5>  </div>
   <div class="modal-footer justify-content-center">
-    <button type="button" class="btn btn-outline-success" >Yes</button>
+    <button type="button" class="btn btn-outline-success" (click)="endExam()" >Yes</button>
     <button type="button" class="btn btn-outline-danger" (click)="c('Close click')">No</button>
   </div>
 </ng-template>
+
+
+
+
+
+

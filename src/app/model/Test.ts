@@ -16,4 +16,11 @@ export class Test {
     }
   }
 
+  getChapters() {
+    let chapters = new Set<string>();
+    this.questions.forEach(q => chapters.add(q.chapter.chapterName))
+
+    return(chapters)
+  }
+
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit, NgZone, ElementRef, ViewChild} from '@angular/core';
+import {Component, OnInit, NgZone, ElementRef, ViewChild, AfterViewInit} from '@angular/core';
 import {ExamService} from "../../service/exam.service";
 import {Test} from "../../model/Test";
 import {Chapter} from "../../model/Chapter";
@@ -9,8 +9,12 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/finally';
 import 'rxjs/add/operator/takeWhile';
 import {Choice} from "../../model/Choice";
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {TimerService} from "../../service/timer.service";
+import {ChartModule} from 'primeng/components/chart/chart';
+import index from "@angular/cli/lib/cli";
+
+
 
 
 
@@ -31,8 +35,38 @@ export class ExamComponent implements OnInit {
   answeredQuestions:number=0;
   countDown:number = 1800;
   timerOn:boolean = true;
+  modalReference:NgbModalRef;
+  yourScore:number=0;
+  progressScore:string;
+  testResult:string;
+  elapsedTime:number;
+  barData:any;
+  correctAnswers:number;
+
 
   closeResult:any;
+  barChartOptions= {
+    title: {
+      display: true,
+      text: 'Custom Chart Title'
+    },
+    scales:
+      {
+        xAxes: [
+          {ticks: {
+           display:false
+          },
+        }],
+        yAxes: [{
+          ticks: {
+            min: 0,
+            stepSize: 1,
+          }
+
+        }]
+
+
+      }}
 
   pager = {
     index: 0,
@@ -45,14 +79,36 @@ export class ExamComponent implements OnInit {
   private myobs = Observable.timer(0,1000).takeWhile(()=>this.countDown>0).map(m => m);
   this.subscription=this.myobs.subscribe(x => this.countDown--);
  */
+
   constructor(private examService:ExamService,private modalService:NgbModal, private timerService:TimerService) { }
+
+
 
   ngOnInit() {
 
 
     this.mode='test';
-    this.timerService.getTimer(this.countDown).subscribe(x=> this.countDown=x);
     this.loadTest();
+    this.timerService.getTimer(this.countDown).subscribe(x=> this.countDown=x);
+    this.barData = {
+      labels: [],
+      datasets: [
+        {
+          label: 'Correct Answers',
+          backgroundColor: '#66ffcc',
+          borderColor: '#6544a9',
+          data: []
+        },
+        {
+          label: 'Wrong Answers',
+          backgroundColor: '#ffb8f0',
+          borderColor: '#cc4e0e',
+          data: []
+        }
+      ]
+    };
+
+
 
   }
 
@@ -60,6 +116,34 @@ timerDisable(){this.timerOn=false}
   timerEnable(){
     this.timerOn=true;
 
+  }
+  endExam(){
+    this.mode='ended';
+    this.testResult=this.getTestResult(60)
+    this.elapsedTime= 1800 - this.countDown;
+    let wrongPerChapter=[];
+    let correctPerChapter=[];
+
+    for (let c of Array.from(this.test.getChapters().values())){
+      let wrong=0;
+      let correct=0;
+      this.test.questions.forEach(q=> {
+        if (q.chapter.chapterName===c && this.isCorrect(q)){correct++}
+        else if(q.chapter.chapterName===c && !this.isCorrect(q)){wrong++}
+      })
+      wrongPerChapter.push(wrong);
+      correctPerChapter.push(correct);
+      this.barData.labels.push(c);
+    }
+
+    this.barData.datasets[0].data=correctPerChapter;
+    this.barData.datasets[1].data=wrongPerChapter;
+
+
+
+
+
+    this.modalReference.close();
   }
 
   loadTest(){
@@ -69,6 +153,19 @@ timerDisable(){this.timerOn=false}
       this.filtered=this.test.questions.slice(this.pager.index, this.pager.index + this.pager.size)}
      else {this.filtered=[];}
     });
+
+  }
+
+  countCorrectAnswers(test:Test){ let i =0;
+    this.test.questions.forEach(x=> {if(this.isCorrect(x)){i++}});
+    return i
+  }
+
+  getTestResult(sucessRate:number){
+    this.correctAnswers=this.countCorrectAnswers(this.test);
+    this.yourScore=(this.correctAnswers/this.pager.count)*100;
+    this.progressScore=this.yourScore.toPrecision(3);
+    return (this.yourScore>= sucessRate ? 'Congratulations':'Failed')
 
   }
 
@@ -111,12 +208,15 @@ timerDisable(){this.timerOn=false}
 
   }
 
+
+
+
   isAnswered(question: Question) {
     return question.choices.find(x => x.selected) ? true : false;
   };
 
   isCorrect(question: Question) {
-    return question.choices.every(x => x.selected === x.correct) ? 'correct' : 'wrong';
+    return question.choices.every(x => x.selected === x.correct) ? true : false;
   };
 
 
@@ -128,7 +228,8 @@ timerDisable(){this.timerOn=false}
   }
 
   open(content) {
-    this.modalService.open(content,{size:'sm',centered:true}).result.then((result) => {
+    this.modalReference=this.modalService.open(content,{size:'sm',centered:true})
+      this.modalReference.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;

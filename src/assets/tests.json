@@ -12,7 +12,7 @@
                 "questionExplanation": "http://winterbe.com/posts/2014/03/16/java-8-tutorial/ (functions) \r\nTo check with the pdf",
                 "chapter": {
                     "chapterId": 1,
-                    "chapterName": "All"
+                    "chapterName": "x1"
                 },
                 "choices": [
                     {
@@ -42,6 +42,341 @@
             "questionHeader": "Given the code fragment :",
             "questionCode": "List<Integer> list1 = Arrays.asList(10, 20);\r\nList<Integer> list2 = Arrays.asList(15, 30);\r\n//line n1",
             "questionStatement": "Which code fragment, when inserted at line n1, prints 10 20 15 30 ?",            "questionType": 2,
+            "questionExplanation": "http://winterbe.com/posts/2014/03/16/java-8-tutorial/ (functions) \r\nTo check with the pdf",
+            "chapter": {
+              "chapterId": 2,
+              "chapterName": "Java Building Blocks"
+            },
+            "choices": [
+              {
+                "choiceId": 3,
+                "choiceStatement": "It accepts one argument and always produces a result of the same type as the argument",
+                "correct": false
+              },
+              {
+                "choiceId": 1,
+                "choiceStatement": "It accepts one argument and returns void",
+                "correct": false
+              },
+              {
+                "choiceId": 2,
+                "choiceStatement": "It accepts one argument and returns boolean",
+                "correct": false
+              },
+              {
+                "choiceId": 4,
+                "choiceStatement": "It accepts an argument and produces a result of any data type.  ",
+                "correct": true
+              }
+            ]
+          },
+          {
+            "questionId": 1,
+            "questionHeader": "Given the code fragment :",
+            "questionCode": "List<Integer> list1 = Arrays.asList(10, 20);\r\nList<Integer> list2 = Arrays.asList(15, 30);\r\n//line n1",
+            "questionStatement": "Which code fragment, when inserted at line n1, prints 10 20 15 30 ?",
+            "questionType": 1,
+            "questionExplanation": "http://winterbe.com/posts/2014/03/16/java-8-tutorial/ (functions) \r\nTo check with the pdf",
+            "chapter": {
+              "chapterId": 3,
+              "chapterName": "Java Data Types"
+            },
+            "choices": [
+              {
+                "choiceId": 3,
+                "choiceStatement": "It accepts one argument and always produces a result of the same type as the argument",
+                "correct": false
+              },
+              {
+                "choiceId": 1,
+                "choiceStatement": "It accepts one argument and returns void",
+                "correct": false
+              },
+              {
+                "choiceId": 2,
+                "choiceStatement": "It accepts one argument and returns boolean",
+                "correct": false
+              },
+              {
+                "choiceId": 4,
+                "choiceStatement": "It accepts an argument and produces a result of any data type.  ",
+                "correct": true
+              }
+            ]
+          },
+          {
+            "questionId": 1,
+            "questionHeader": "Given the code fragment :",
+            "questionCode": "List<Integer> list1 = Arrays.asList(10, 20);\r\nList<Integer> list2 = Arrays.asList(15, 30);\r\n//line n1",
+            "questionStatement": "Which code fragment, when inserted at line n1, prints 10 20 15 30 ?",
+            "questionType": 1,
+            "questionExplanation": "http://winterbe.com/posts/2014/03/16/java-8-tutorial/ (functions) \r\nTo check with the pdf",
+            "chapter": {
+              "chapterId": 4,
+              "chapterName": "Design pattern and Principles"
+            },
+            "choices": [
+              {
+                "choiceId": 3,
+                "choiceStatement": "It accepts one argument and always produces a result of the same type as the argument",
+                "correct": false
+              },
+              {
+                "choiceId": 1,
+                "choiceStatement": "It accepts one argument and returns void",
+                "correct": false
+              },
+              {
+                "choiceId": 2,
+                "choiceStatement": "It accepts one argument and returns boolean",
+                "correct": false
+              },
+              {
+                "choiceId": 4,
+                "choiceStatement": "It accepts an argument and produces a result of any data type.  ",
+                "correct": true
+              }
+            ]
+          },{
+            "questionId": 1,
+            "questionHeader": "Given the code fragment :",
+            "questionCode": "List<Integer> list1 = Arrays.asList(10, 20);\r\nList<Integer> list2 = Arrays.asList(15, 30);\r\n//line n1",
+            "questionStatement": "Which code fragment, when inserted at line n1, prints 10 20 15 30 ?",
+            "questionType": 1,
+            "questionExplanation": "http://winterbe.com/posts/2014/03/16/java-8-tutorial/ (functions) \r\nTo check with the pdf",
+            "chapter": {
+              "chapterId": 1,
+              "chapterName": "Dates, strings and localization"
+            },
+            "choices": [
+              {
+                "choiceId": 3,
+                "choiceStatement": "It accepts one argument and always produces a result of the same type as the argument",
+                "correct": false
+              },
+              {
+                "choiceId": 1,
+                "choiceStatement": "It accepts one argument and returns void",
+                "correct": false
+              },
+              {
+                "choiceId": 2,
+                "choiceStatement": "It accepts one argument and returns boolean",
+                "correct": false
+              },
+              {
+                "choiceId": 4,
+                "choiceStatement": "It accepts an argument and produces a result of any data type.  ",
+                "correct": true
+              }
+            ]
+          },{
+            "questionId": 1,
+            "questionHeader": "Given the code fragment :",
+            "questionCode": "List<Integer> list1 = Arrays.asList(10, 20);\r\nList<Integer> list2 = Arrays.asList(15, 30);\r\n//line n1",
+            "questionStatement": "Which code fragment, when inserted at line n1, prints 10 20 15 30 ?",
+            "questionType": 1,
+            "questionExplanation": "http://winterbe.com/posts/2014/03/16/java-8-tutorial/ (functions) \r\nTo check with the pdf",
+            "chapter": {
+              "chapterId": 1,
+              "chapterName": "Dates, strings and localization"
+            },
+            "choices": [
+              {
+                "choiceId": 3,
+                "choiceStatement": "It accepts one argument and always produces a result of the same type as the argument",
+                "correct": false
+              },
+              {
+                "choiceId": 1,
+                "choiceStatement": "It accepts one argument and returns void",
+                "correct": false
+              },
+              {
+                "choiceId": 2,
+                "choiceStatement": "It accepts one argument and returns boolean",
+                "correct": false
+              },
+              {
+                "choiceId": 4,
+                "choiceStatement": "It accepts an argument and produces a result of any data type.  ",
+                "correct": true
+              }
+            ]
+          }, {
+            "questionId": 1,
+            "questionHeader": "Given the code fragment :",
+            "questionCode": "List<Integer> list1 = Arrays.asList(10, 20);\r\nList<Integer> list2 = Arrays.asList(15, 30);\r\n//line n1",
+            "questionStatement": "Which code fragment, when inserted at line n1, prints 10 20 15 30 ?",
+            "questionType": 1,
+            "questionExplanation": "http://winterbe.com/posts/2014/03/16/java-8-tutorial/ (functions) \r\nTo check with the pdf",
+            "chapter": {
+              "chapterId": 1,
+              "chapterName": "Dates, strings and localization"
+            },
+            "choices": [
+              {
+                "choiceId": 3,
+                "choiceStatement": "It accepts one argument and always produces a result of the same type as the argument",
+                "correct": false
+              },
+              {
+                "choiceId": 1,
+                "choiceStatement": "It accepts one argument and returns void",
+                "correct": false
+              },
+              {
+                "choiceId": 2,
+                "choiceStatement": "It accepts one argument and returns boolean",
+                "correct": false
+              },
+              {
+                "choiceId": 4,
+                "choiceStatement": "It accepts an argument and produces a result of any data type.  ",
+                "correct": true
+              }
+            ]
+          },{
+            "questionId": 1,
+            "questionHeader": "Given the code fragment :",
+            "questionCode": "List<Integer> list1 = Arrays.asList(10, 20);\r\nList<Integer> list2 = Arrays.asList(15, 30);\r\n//line n1",
+            "questionStatement": "Which code fragment, when inserted at line n1, prints 10 20 15 30 ?",
+            "questionType": 1,
+            "questionExplanation": "http://winterbe.com/posts/2014/03/16/java-8-tutorial/ (functions) \r\nTo check with the pdf",
+            "chapter": {
+              "chapterId": 1,
+              "chapterName": "Dates, strings and localization"
+            },
+            "choices": [
+              {
+                "choiceId": 3,
+                "choiceStatement": "It accepts one argument and always produces a result of the same type as the argument",
+                "correct": false
+              },
+              {
+                "choiceId": 1,
+                "choiceStatement": "It accepts one argument and returns void",
+                "correct": false
+              },
+              {
+                "choiceId": 2,
+                "choiceStatement": "It accepts one argument and returns boolean",
+                "correct": false
+              },
+              {
+                "choiceId": 4,
+                "choiceStatement": "It accepts an argument and produces a result of any data type.  ",
+                "correct": true
+              }
+            ]
+          },{
+            "questionId": 1,
+            "questionHeader": "Given the code fragment :",
+            "questionCode": "List<Integer> list1 = Arrays.asList(10, 20);\r\nList<Integer> list2 = Arrays.asList(15, 30);\r\n//line n1",
+            "questionStatement": "Which code fragment, when inserted at line n1, prints 10 20 15 30 ?",
+            "questionType": 1,
+            "questionExplanation": "http://winterbe.com/posts/2014/03/16/java-8-tutorial/ (functions) \r\nTo check with the pdf",
+            "chapter": {
+              "chapterId": 1,
+              "chapterName": "All"
+            },
+            "choices": [
+              {
+                "choiceId": 3,
+                "choiceStatement": "It accepts one argument and always produces a result of the same type as the argument",
+                "correct": false
+              },
+              {
+                "choiceId": 1,
+                "choiceStatement": "It accepts one argument and returns void",
+                "correct": false
+              },
+              {
+                "choiceId": 2,
+                "choiceStatement": "It accepts one argument and returns boolean",
+                "correct": false
+              },
+              {
+                "choiceId": 4,
+                "choiceStatement": "It accepts an argument and produces a result of any data type.  ",
+                "correct": true
+              }
+            ]
+          },
+          {
+            "questionId": 1,
+            "questionHeader": "Given the code fragment :",
+            "questionCode": "List<Integer> list1 = Arrays.asList(10, 20);\r\nList<Integer> list2 = Arrays.asList(15, 30);\r\n//line n1",
+            "questionStatement": "Which code fragment, when inserted at line n1, prints 10 20 15 30 ?",
+            "questionType": 1,
+            "questionExplanation": "http://winterbe.com/posts/2014/03/16/java-8-tutorial/ (functions) \r\nTo check with the pdf",
+            "chapter": {
+              "chapterId": 1,
+              "chapterName": "All"
+            },
+            "choices": [
+              {
+                "choiceId": 3,
+                "choiceStatement": "It accepts one argument and always produces a result of the same type as the argument",
+                "correct": false
+              },
+              {
+                "choiceId": 1,
+                "choiceStatement": "It accepts one argument and returns void",
+                "correct": false
+              },
+              {
+                "choiceId": 2,
+                "choiceStatement": "It accepts one argument and returns boolean",
+                "correct": false
+              },
+              {
+                "choiceId": 4,
+                "choiceStatement": "It accepts an argument and produces a result of any data type.  ",
+                "correct": true
+              }
+            ]
+          },
+          {
+            "questionId": 1,
+            "questionHeader": "Given the code fragment :",
+            "questionCode": "List<Integer> list1 = Arrays.asList(10, 20);\r\nList<Integer> list2 = Arrays.asList(15, 30);\r\n//line n1",
+            "questionStatement": "Which code fragment, when inserted at line n1, prints 10 20 15 30 ?",
+            "questionType": 1,
+            "questionExplanation": "http://winterbe.com/posts/2014/03/16/java-8-tutorial/ (functions) \r\nTo check with the pdf",
+            "chapter": {
+              "chapterId": 1,
+              "chapterName": "All"
+            },
+            "choices": [
+              {
+                "choiceId": 3,
+                "choiceStatement": "It accepts one argument and always produces a result of the same type as the argument",
+                "correct": false
+              },
+              {
+                "choiceId": 1,
+                "choiceStatement": "It accepts one argument and returns void",
+                "correct": false
+              },
+              {
+                "choiceId": 2,
+                "choiceStatement": "It accepts one argument and returns boolean",
+                "correct": false
+              },
+              {
+                "choiceId": 4,
+                "choiceStatement": "It accepts an argument and produces a result of any data type.  ",
+                "correct": true
+              }
+            ]
+          },
+          {
+            "questionId": 1,
+            "questionHeader": "Given the code fragment :",
+            "questionCode": "List<Integer> list1 = Arrays.asList(10, 20);\r\nList<Integer> list2 = Arrays.asList(15, 30);\r\n//line n1",
+            "questionStatement": "Which code fragment, when inserted at line n1, prints 10 20 15 30 ?",
+            "questionType": 1,
             "questionExplanation": "http://winterbe.com/posts/2014/03/16/java-8-tutorial/ (functions) \r\nTo check with the pdf",
             "chapter": {
               "chapterId": 1,

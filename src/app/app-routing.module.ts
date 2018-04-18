@@ -8,6 +8,7 @@ import {OcasummaryComponent} from "./components/ocasummary/ocasummary.component"
 import {OcpComponent} from "./components/ocp/ocp.component";
 import {ExamComponent} from "./components/exam/exam.component";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgCircleProgressModule} from "ng-circle-progress";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent  },
@@ -22,7 +23,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),NgbModule.forRoot()],
+  imports: [RouterModule.forRoot(routes),NgbModule.forRoot(),NgCircleProgressModule.forRoot()],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
