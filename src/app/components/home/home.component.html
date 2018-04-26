@@ -3,9 +3,9 @@
   <h2>Oracle Certified Associate / Programmer Sample Exams :</h2>
   <p>This App is developed to help you prepare and achieve the Oracle Certification for Java.
     Start reviewing exam essentials and take a free trial test exam or sign up and discover more features of the app </p>
-  <p><a *ngIf="!authService.isLoggedIn()" class="btn btn-primary btn-lg btn-round" routerLink="/exam" role="button"><i class="fa fa-play-circle" aria-hidden="true"></i>
+  <p><a *ngIf="!authService.isLoggedIn()" class="btn btn-primary btn-lg btn-round text-light" (click)="openModal(configTest)" role="button"><i class="fa fa-play-circle" aria-hidden="true"></i>
     Free Exam »</a></p>
-    <p><a *ngIf="authService.isLoggedIn()" class="btn btn-primary btn-lg btn-round" routerLink="/exam" role="button"><i class="fa fa-play-circle" aria-hidden="true"></i>
+    <p><a *ngIf="authService.isLoggedIn()" class="btn btn-primary btn-lg btn-round text-light" routerLink="/exam" role="button"><i class="fa fa-play-circle" aria-hidden="true"></i>
       Pass an exam »</a></p>
 
 </div>
@@ -32,4 +32,81 @@
 
 
 
+<ng-template #configTest let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h6 class="modal-title">Test Configuration</h6>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <fieldset [disabled]="false">
 
+      <div class="form-group">
+
+          <div class="form-check mt-2">
+            <input type="checkbox" id="timerCheck" [(ngModel)]="testConfig.timerOn">
+            <label class="form-check-label mr-sm-2" for="timerCheck">Enable Timer</label>
+        </div>
+
+
+
+
+        <div *ngIf="testConfig.timerOn"><label class="mr-sm-2 mt-2" for="time"> &nbsp; &nbsp;&nbsp;Duration :</label> <ngb-timepicker id="time" [(ngModel)]="time" [formControl]="ctrl" required></ngb-timepicker>
+        <div class="small form-text text-danger" *ngIf="!ctrl.valid">
+          <div *ngIf="ctrl.errors['tooLong']">Maximum duration : 2h30</div>
+        </div></div>
+
+        <div class="form-check mt-2">
+          <input type="checkbox" id="shuffle" [(ngModel)]="testConfig.shuffleOptions">
+          <label class="form-check-label " for="shuffle">Shuffle questions </label>
+        </div>
+
+
+      <div class="form-check form-check-inline mt-2">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OCA" value="option1"> OCA
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="OCP" value="option2"> OCP
+        </label>
+      </div>
+
+
+
+        <div class="mt-2"><select class="custom-select " id="inlineFormCustomSelect">
+        <option selected>Choose test</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+      </div>
+
+
+      <div class="form-check mt-2">
+        <input type="checkbox" class="form-check-input" id="onlyChapters" [(ngModel)]="testConfig.takeOnlyChapters">
+        <label class="form-check-label" for="onlyChapters">Take only these chapters</label>
+        <select *ngIf="testConfig.takeOnlyChapters" class="custom-select" multiple>
+          <option value="1">chapitre 1</option>
+          <option value="2">chapitre 2</option>
+          <option value="3">chapitre 3</option>
+        </select>
+      </div>
+
+
+      </div>
+
+    </fieldset>
+
+
+
+  </div>
+
+
+  <div class="modal-footer justify-content-center">
+    <button type="button" class="btn btn-outline-success"(click)="configurateTest()" routerLink="/exam">Begin Test</button>
+    <button type="button" class="btn btn-outline-danger" (click)="c('Close click')">Back</button>
+  </div>
+</ng-template>

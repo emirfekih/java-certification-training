@@ -18,7 +18,7 @@ export class TimerService {
      const rButton = document.getElementById('resume');
 
     //let interval$ = Observable.timer(0,1000).pipe(mapTo(-1));
-    let interval$ = interval(1000).pipe(mapTo(-1));
+    let interval$ = interval(950).pipe(mapTo(-1));
 
     let pause$ = fromEvent(pButton, 'click').pipe(mapTo(false));
     let resume$ = fromEvent(rButton,'click').pipe(mapTo(true));

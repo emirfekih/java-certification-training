@@ -1,13 +1,16 @@
-<div class="jumbotron" id="jumb">
 
+<div class="jumbotron animated bounceInDown" id="jumb">
 <!--QUIZ MODE-->
   <div [hidden]="mode!=='test'">
     <div class="d-flex">
-      <div class="ml-auto p-1 h-25 btn btn-outline-dark btn-sm" ngbTooltip="resume timer" placement="top" id="resume"(click)="timerEnable()"><i class="fa fa-play fa-xs"></i></div>
       &nbsp;
-      <div class=" p-1 h-25 btn btn-outline-dark btn-sm" ngbTooltip="pause timer" placement="top" id="pause" (click)="timerDisable()"> <i class="fa fa-pause fa-xs"></i></div>
+      <div [hidden]="testConfig.timerOn==false" class="ml-auto p-1 h-25 btn btn-outline-dark btn-sm" ngbTooltip="resume timer" placement="top" id="resume"><i class="fa fa-play fa-xs"></i></div>
 
-      <div class=" p-1 font-weight-bold" [ngClass]="countDown >=60 || countDown ===0 ? 'p-1 font-weight-bold':'p-1 font-weight-bold text-danger blink_me'">&nbsp; &nbsp;{{getHours(countDown)}}h {{getMinutes(countDown)}}m {{getSeconds(countDown)}}s</div>
+      <div  [hidden]="testConfig.timerOn==false" class=" p-1 h-25 btn btn-outline-dark btn-sm" ngbTooltip="pause timer" placement="top" id="pause"> <i class="fa fa-pause fa-xs"></i></div>
+      <div [hidden]="testConfig.timerOn==false" class=" p-1 font-weight-bold" [ngClass]="countDown >=60 || countDown ===0 ? 'p-1 font-weight-bold':'p-1 font-weight-bold text-danger blink_me'">&nbsp; &nbsp;{{getHours(countDown)}}h {{getMinutes(countDown)}}m {{getSeconds(countDown)}}s</div>
+
+
+
 
     </div>
 
@@ -83,8 +86,8 @@
     <div class="row justify-content-between">
       <div class="col-md-4">
         <div class="btn-group" role="group" aria-label="Previous and next button group">
-          <button type="button" class="btn btn-outline-secondary font-weight-bold" [disabled]="countDown==0 || timerOn==false" (click)="goTo(pager.index - 1)">Previous</button>
-          <button type="button" class="btn btn-outline-secondary font-weight-bold rounded" [disabled]="countDown==0 || timerOn==false" (click)="goTo(pager.index + 1)">Next</button>
+          <button type="button" class="btn btn-outline-secondary font-weight-bold" [disabled]="countDown==0 " (click)="goTo(pager.index - 1)">Previous</button>
+          <button type="button" class="btn btn-outline-secondary font-weight-bold rounded" [disabled]="countDown==0 " (click)="goTo(pager.index + 1)">Next</button>
           &nbsp;&nbsp;
           <select class="form-control" id="gender1" ngbTooltip="choose view" placement="right" [(ngModel)]="mode">
             <option value="test">Test </option>
@@ -158,7 +161,7 @@
     <hr>
     <div class="row justify-content-between">
 
-      <div class="p-2 mb-auto"><h5>Elapsed time: </h5>{{getHours(elapsedTime)}}h {{getMinutes(elapsedTime)}}m {{getSeconds(elapsedTime)}}s <br> <h5>Required Score :</h5> xxx.xx %  <br>  <h5>Wrong Answers:</h5> {{pager.count-correctAnswers}}/{{pager.count}}   </div>
+      <div class="p-2 mb-auto"><div *ngIf="testConfig.timerOn"><h5>Elapsed time: </h5>{{getHours(elapsedTime)}}h {{getMinutes(elapsedTime)}}m {{getSeconds(elapsedTime)}}s <br> <h5> Time Limit:</h5> {{getHours(testConfig.duration)}}h {{getMinutes(testConfig.duration)}}m </div><h5>Required Score :</h5> 65%  <br>  <h5>Wrong Answers:</h5> {{pager.count-correctAnswers}}/{{pager.count}}   </div>
       <div class="p-2 mb-auto" *ngIf="testResult==='Failed'"><circle-progress
         [showSubtitle] = false
         [backgroundPadding] = 10

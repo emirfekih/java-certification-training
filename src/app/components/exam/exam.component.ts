@@ -13,6 +13,7 @@ import {NgbModal, ModalDismissReasons, NgbModalRef} from '@ng-bootstrap/ng-boots
 import {TimerService} from "../../service/timer.service";
 import {ChartModule} from 'primeng/components/chart/chart';
 import index from "@angular/cli/lib/cli";
+import {Config} from "../../model/Config";
 
 
 
@@ -33,8 +34,7 @@ export class ExamComponent implements OnInit {
   mode:string;
   filtered:any;
   answeredQuestions:number=0;
-  countDown:number = 1800;
-  timerOn:boolean = true;
+  countDown:number;
   modalReference:NgbModalRef;
   yourScore:number=0;
   progressScore:string;
@@ -42,13 +42,13 @@ export class ExamComponent implements OnInit {
   elapsedTime:number;
   barData:any;
   correctAnswers:number;
-
-
   closeResult:any;
+  testConfig:Config = new Config();
+
   barChartOptions= {
     title: {
       display: true,
-      text: 'Custom Chart Title'
+      text: 'Correct/Wrong answers per chapter'
     },
     scales:
       {
@@ -86,21 +86,26 @@ export class ExamComponent implements OnInit {
 
   ngOnInit() {
 
-
     this.mode='test';
+    this.examService.currentMessage.subscribe(testConfig=> this.testConfig=testConfig);
     this.loadTest();
-    this.timerService.getTimer(this.countDown).subscribe(x=> this.countDown=x);
+
+    //launch timer if enabled in config
+    if(this.testConfig.timerOn){
+      this.countDown=this.testConfig.duration;
+      this.timerService.getTimer(this.countDown).subscribe(x=> this.countDown=x);
+    }
     this.barData = {
       labels: [],
       datasets: [
         {
-          label: 'Correct Answers',
+          label: 'Correct',
           backgroundColor: '#66ffcc',
           borderColor: '#6544a9',
           data: []
         },
         {
-          label: 'Wrong Answers',
+          label: 'Wrong ',
           backgroundColor: '#ffb8f0',
           borderColor: '#cc4e0e',
           data: []
@@ -110,19 +115,18 @@ export class ExamComponent implements OnInit {
 
 
 
-  }
-
-timerDisable(){this.timerOn=false}
-  timerEnable(){
-    this.timerOn=true;
 
   }
+
+
   endExam(){
     this.mode='ended';
     this.testResult=this.getTestResult(60)
-    this.elapsedTime= 1800 - this.countDown;
+    this.elapsedTime= this.testConfig.duration - this.countDown;
     let wrongPerChapter=[];
     let correctPerChapter=[];
+
+    //Count Correct and wrong answers per chapter
 
     for (let c of Array.from(this.test.getChapters().values())){
       let wrong=0;
@@ -138,12 +142,7 @@ timerDisable(){this.timerOn=false}
 
     this.barData.datasets[0].data=correctPerChapter;
     this.barData.datasets[1].data=wrongPerChapter;
-
-
-
-
-
-    this.modalReference.close();
+   this.modalReference.close();
   }
 
   loadTest(){
