@@ -4,7 +4,7 @@ import {
   ModalDismissReasons, NgbModal, NgbModalRef, NgbTimepickerConfig,
   NgbTimeStruct
 } from "@ng-bootstrap/ng-bootstrap";
-import {FormControl} from "@angular/forms";
+import {FormControl, Validators} from "@angular/forms";
 import {ExamService} from "../../service/exam.service";
 import {Config} from "../../model/Config";
 import {Test} from "../../model/Test";
@@ -74,6 +74,7 @@ export class HomeComponent implements OnInit {
     this.modalReference.close();
 
   }
+
 
   ctrl = new FormControl('', (control: FormControl) => {
     const value = control.value;

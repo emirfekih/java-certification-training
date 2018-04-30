@@ -143,11 +143,9 @@ export class ExamComponent implements OnInit {
    this.modalReference.close();
   }
 
+
+
   loadTest(){
-
-
-
-
     this.examService.getExam(this.API_URL+"/test/1").subscribe(data => {this.test=new Test(data);
     this.pager.count=this.test.questions.length;
     if (this.test.questions){
@@ -217,6 +215,18 @@ export class ExamComponent implements OnInit {
 
   }
 
+  buildReqParams(){
+
+    let reqChapters='';
+    this.testConfig.chapters.forEach(x=> reqChapters=reqChapters+x+',');
+    let reqParams='?testId='+this.testConfig.testId+'&questionRange='+this.testConfig.questionRange+
+      '&firstQuestion='+this.testConfig.firstQuestion+'&lastQuuestion='+this.testConfig.lastQuestion+'&timerOn='+
+      this.testConfig.timerOn+'&duration='+this.testConfig.duration+'&shuffleOptions='+this.testConfig.shuffleOptions+
+      '&takeOnlyChapters='+this.testConfig.takeOnlyChapters+'&chapters='+reqChapters.slice(0,reqChapters.length-1);
+
+    return reqParams
+
+  }
 
 
 

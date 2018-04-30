@@ -9,8 +9,7 @@ export class Test {
 
   constructor(data:any){
     if (data){
-      console.log(data);
-      console.log(this)
+
       this.testId=data.testId;
       this.requiredScore=data.requiredScore;
       this.testName=data.testName;
