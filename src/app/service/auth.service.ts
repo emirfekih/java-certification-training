@@ -1,16 +1,21 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
+import { JwtHelper, tokenNotExpired } from 'angular2-jwt'
+import { environment } from '../../environments/environment';
+
 
 @Injectable()
 export class AuthService {
+
+  private API_URL= environment.API_URL;
+
 
   constructor(private http: Http) {
 
    }
 
    login(credentials){
-     return this.http.post('https://localhost:8443/auth', credentials)
+     return this.http.post(this.API_URL+'/auth', credentials)
       .map(response => {
         let result = response.json();
         if(result && result.token ){
@@ -19,6 +24,10 @@ export class AuthService {
         }
         return false;
       });
+   }
+
+   getToken(): string {
+    return localStorage.getItem('token');
    }
 
    logout(){

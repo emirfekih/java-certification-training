@@ -7,10 +7,10 @@ export class Config {
   firstQuestion:number;
   lastQuestion:number;
   takeOnlyChapters:boolean;
-  chapters:string[];
+  chapters:number[];
 
   constructor(){
-
+    this.testId=1;
     this.questionRange=false;
     this.firstQuestion=0;
     this.lastQuestion=0;

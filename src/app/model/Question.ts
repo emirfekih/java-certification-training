@@ -12,6 +12,7 @@ export class Question{
   chapter:ChapterDTO;
   choices:Choice[];
 
+
   answered:boolean;
   review:boolean;
   showAnswer:boolean;

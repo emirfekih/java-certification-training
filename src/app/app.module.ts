@@ -14,7 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { OcasummaryComponent } from './components/ocasummary/ocasummary.component';
 import { OcpComponent } from './components/ocp/ocp.component';
 import {ChapterService} from "./service/chapter.service";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule,HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ExamComponent } from './components/exam/exam.component';
 import {ExamService} from "./service/exam.service";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
@@ -24,6 +24,7 @@ import { ResultComponent } from './result/result.component';
 import {NgCircleProgressModule} from "ng-circle-progress";
 import {ChartModule} from 'primeng/components/chart/chart';
 
+import {TokenInterceptor} from "./service/token.interceptor";
 
 
 
@@ -59,7 +60,14 @@ import {ChartModule} from 'primeng/components/chart/chart';
     NgCircleProgressModule,
     ChartModule
   ],
-  providers: [ChapterService,ExamService,AuthService,RegisterService,TimerService],
+  providers: [
+    ChapterService,ExamService,AuthService,RegisterService,TimerService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

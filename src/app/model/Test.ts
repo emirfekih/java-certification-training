@@ -4,16 +4,22 @@ export class Test {
   testId:number;
   testName:string;
   testType:string;
+  requiredScore:number;
   questions:Question[];
 
   constructor(data:any){
     if (data){
+      console.log(data);
+      console.log(this)
       this.testId=data.testId;
+      this.requiredScore=data.requiredScore;
       this.testName=data.testName;
       this.testType=data.testType;
       this.questions=[];
       data.questions.forEach(x => this.questions.push(new Question(x)));
+
     }
+
   }
 
   getChapters() {

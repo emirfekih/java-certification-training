@@ -14,6 +14,7 @@ import {TimerService} from "../../service/timer.service";
 import {ChartModule} from 'primeng/components/chart/chart';
 import index from "@angular/cli/lib/cli";
 import {Config} from "../../model/Config";
+import {environment} from "../../../environments/environment";
 
 
 
@@ -28,6 +29,7 @@ import {Config} from "../../model/Config";
 
 export class ExamComponent implements OnInit {
 
+  private API_URL= environment.API_URL;
 
 
   test:Test= new Test(null);
@@ -90,11 +92,7 @@ export class ExamComponent implements OnInit {
     this.examService.currentMessage.subscribe(testConfig=> this.testConfig=testConfig);
     this.loadTest();
 
-    //launch timer if enabled in config
-    if(this.testConfig.timerOn){
-      this.countDown=this.testConfig.duration;
-      this.timerService.getTimer(this.countDown).subscribe(x=> this.countDown=x);
-    }
+
     this.barData = {
       labels: [],
       datasets: [
@@ -121,7 +119,7 @@ export class ExamComponent implements OnInit {
 
   endExam(){
     this.mode='ended';
-    this.testResult=this.getTestResult(60)
+    this.testResult=this.getTestResult(this.test.requiredScore);
     this.elapsedTime= this.testConfig.duration - this.countDown;
     let wrongPerChapter=[];
     let correctPerChapter=[];
@@ -146,12 +144,24 @@ export class ExamComponent implements OnInit {
   }
 
   loadTest(){
-    this.examService.getExam("assets/tests.json").subscribe(data => {this.test=new Test(data);
+
+
+
+
+    this.examService.getExam(this.API_URL+"/test/1").subscribe(data => {this.test=new Test(data);
     this.pager.count=this.test.questions.length;
     if (this.test.questions){
       this.filtered=this.test.questions.slice(this.pager.index, this.pager.index + this.pager.size)}
      else {this.filtered=[];}
     });
+
+    //launch timer if enabled in config
+    if(this.testConfig.timerOn){
+      this.countDown=this.testConfig.duration;
+      this.timerService.getTimer(this.countDown).subscribe(x=> this.countDown=x);
+    }
+
+
 
   }
 

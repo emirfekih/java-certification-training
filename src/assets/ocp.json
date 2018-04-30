@@ -16,9 +16,7 @@
                 "Develop code that declares, implements, and/or extends interface and use the @Override annotation"]}
             ],
   
-    "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
-      "Be able to determine where variables go into and out of scope.",
-      "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+    "objectives":["Be able to identify the output of code using instanceof.","Recognize correct and incorrect implementations of equals(), hashCode(), andtoString().","Be able to create enum classes.","Identify and use nested classes.","Know how to use imports and static imports.","Understand the rules for method overriding and overloading."],
     "summary":["The instanceof keyword compares an object to a class or interface type. It also looks at subclasses and subinterfaces.",
         "x instanceof Object returns true unless x is null. If the compiler can determine that there is no way for instanceof to return true, it will generate a compiler error.",
         "Virtual method invocation means that Java will look at subclasses when finding the right method to call. This is true, even from within a method in the superclass.",
@@ -53,9 +51,7 @@
                 "Create and use singleton classes and immutable classes"]}
                ],
       
-        "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
-          "Be able to determine where variables go into and out of scope.",
-          "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+        "objectives":["Be able to write code that declares, implements, and/or extends interfaces.","Know how to create and recognize a functional interface.","Be able to write valid lambda expressions.","Understand polymorphism.","Understand the importance of design principles and design patterns.","Know how to implement encapsulation.","Be able to apply the is‐a and has‐a tests.","Be able to apply object composition and distinguish it from inheritance.","Be able to apply creational patterns including the singleton pattern and the immutable object pattern."],
         "summary":["One of the primary goals of this chapter was to teach you how to write better code. We demonstrated techniques for designing class structures that scale naturally over time, integrate well with other applications, and are easy for other developers to read and understand.",
             "We started off with a brief review of interfaces from your OCA studies showing how to declare, implement, and extend them. We then moved on to functional programming and reviewed the various syntax options available for defining functional interfaces and writing lambda expressions.",
             "Given the prevalence of lambda expressions throughout Java 8, you absolutely need to practice writing and using lambda expressions before taking the exam.",
@@ -88,9 +84,7 @@
                    {"title":"Java Stream API","covers":["Use of merge()and flatMap()methods of the Stream API"]}
                    ],
           
-            "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
-              "Be able to determine where variables go into and out of scope.",
-              "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+            "objectives":["Pick the correct type of collection from a description.","Identify valid and invalid uses of generics.","Recognize the difference between compiler warnings and errors when dealing withlegacy code.","Differentiate between Comparable and Comparator.","Understand the behavior and usage of the sort and binary search methods.","Map method references to the “long form” lambda."],
             "summary":["Generics are type parameters for code. To create a class with a generic parameter, add <T> after the class name. You can use any name you want for the type parameter. Single uppercase letters are common choices.",
             "The diamond operator (<>) is used to tell Java that the generic type matches the declaration without specifying it again. The diamond operator can be used for local variables or instance variables as well as one-line declarations.",
             "Generics allow you to specify wildcards. <?> is an unbounded wildcard that means any type. <? extends Object> is an upper bound that means any type that is Object or extends it. <? extends MyInterface> means any type that implements MyInterface. <? super Number> is a lower bound that means any type that is Number or a superclass. A compiler error results from code that attempts to add or remove an item in a list with an unbounded or upper-bounded wildcard.",
@@ -137,9 +131,7 @@
                        {"title":"Java Stream API","covers":["Filter a collection using lambda expressions"]}
                        ],
               
-                "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
-                  "Be able to determine where variables go into and out of scope.",
-                  "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+                "objectives":["Identify the correct functional interface given the number of parameters, return type, and method name—and vice versa.","Write code that uses Optional.","Recognize which operations cause a stream pipeline to execute.","Determine which terminal operations are reductions.","Write code for common intermediate operations.","Compare primitive streams to Stream.","Convert primitive stream types to other primitive stream types.","Translate coding using method references into lambdas and vice versa.","Use peek() to inspect the stream.","Search a stream.","Sort a stream." ],
                 "summary":["Lambdas can reference static variables, instance variables, effectively final parameters, and effectively final local variables. A functional interface has a single abstract method. You must know the functional interfaces:",
                     "- Supplier<T>: Method get() returns T",
                     "- Consumer<T>: Method accept(T t) returns void",
@@ -173,9 +165,7 @@
                             "Build a resource bundle for each locale and load a resource bundle in an application"]}
                            ],
                   
-                    "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
-                      "Be able to determine where variables go into and out of scope.",
-                      "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+                    "objectives":["Recognize invalid uses of dates and times.","Differentiate between Period and Duration.","Perform calculations with dates.","Identify valid and invalid locale strings.","Determine which resource bundle Java will use to look up a key.","Understand which Property value gets used as a default."],
                     "summary":["A LocalDate contains just a date. A LocalTime contains just a time. A LocalDateTime contains both a date and time. A ZonedDateTime adds a time zone. All four have private constructors and are created using LocalDate.now() or LocalDate.of() (or the equivalents for that class). Instant represents a moment in time.",
                         "Dates and times can be manipulated using plus or minus methods. The Period class represents a number of days, months, or years to add to or subtract from a LocalDate, LocalDateTime, or ZonedDateTime. The Duration class represents hours, minutes, and seconds.",
                         "It is used with LocalTime, LocalDateTime, or ZonedDateTime.",
@@ -196,9 +186,7 @@
                                 "Test invariants by using assertions"]}
                            ],
                   
-                    "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
-                      "Be able to determine where variables go into and out of scope.",
-                      "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+                    "objectives":["Determine if an exception is checked or unchecked.","Recognize when to use throw vs."," throws.","Create code using multi-catch.","Identify the similarities and differences between a traditional try statement and try-withresources statement.","Know how to enable assertions."],
                     "summary":["An exception indicates that something unexpected happened. Subclasses of java.lang.",
                         "Error are exceptions that a program should not attempt to handle. Subclasses of java.",
                         "lang.RuntimeException are runtime (unchecked) exceptions. Subclasses of java.lang.",
@@ -223,9 +211,7 @@
                             "Use parallel Streams including reduction, decomposition, merging processes, pipelines, and performance."]}
                            ],
                   
-                    "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
-                      "Be able to determine where variables go into and out of scope.",
-                      "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+                    "objectives":["Create concurrent tasks with a thread executor service using Runnable and Callable.","Be able to synchronize blocks and methods.","Be able to apply the atomic classes.","Be able to use the concurrent collection classes.","Understand the impact of using parallel streams.","Manage process with the CyclicBarrier class and the fork/join framework.","Identify potential threading problems."],
                     "summary":["This chapter introduced you to threads and showed you how to process tasks in parallel using the Concurrency API. For the exam, you should know how to create threads indirectly using an ExecutorService and a fork/join recursive framework. The work that a thread performs can be defi ned in an instance of Runnable or Callable . As of Java 8, these tasks can now be expressed as lambda expressions.",
                         "We presented techniques for organizing tasks among multiple threads using atomic classes, synchronization blocks, synchronized methods, and the CyclicBarrier class.",
                         "The Concurrency API includes numerous collections classes that support multi-threaded processing. For the exam, you should also be familiar with the CopyOnWriteArrayList class, which creates a new underlying structure anytime the list is modifi ed.",
@@ -240,9 +226,7 @@
                                {"title":"Java I/O Fundamentals","covers":["Read and write data from the console",
                                 "Use BufferedReader, BufferedWriter, File, FileReader, FileWriter, FileInputStream, FileOutputStream, ObjectOutputStream, ObjectInputStream, and PrintWriter in the java.io.package."]}],
                   
-                    "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
-                      "Be able to determine where variables go into and out of scope.",
-                      "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+                    "objectives":["Understand files, directories, and streams.","Be able to use the java.","io.","File class.","Distinguish between byte and character streams.","Distinguish between low-level and high-level streams.","Be able to recognize and know how to use the following classes: BufferedReader, BufferedWriter, File, FileReader, FileWriter, FileInputStream, FileOutputStream, ObjectOutputStream, ObjectInputStream, and PrintWriter.","Be able to perform common stream operations including close(), flush(), mark(), markSupported(), reset(), and skip().","Understand how to use Java serialization.","Be able to interact with the user via the Console class."],
                     "summary":["The bulk of this chapter focused on teaching you how to use Java to interact with files. We started off by introducing you to the concept of files and directories, and then we showed you how to reference them using path Strings. We presented the java.io.File class, and we showed you how to use it to read basic file information.",
                         "We then introduced java.io streams to read/write file contents, and we described their various attributes, including low-level vs. high-level, byte vs. character, input vs. output, and so on. The description of the stream is designed to help you remember the function of the stream by using its name as a context clue.",
                         "We visited many of the byte and character stream classes that you will need to know for the exam in increasing order of complexity. A common practice is to start with a low-level resource or file stream and wrap it in a buffered stream to improve performance. You can also apply a high-level stream to manipulate the data, such as a data stream. We described what it means to be serializable in Java, and we showed you how to use the object stream classes to persist objects directly to and from disk.",
@@ -257,9 +241,7 @@
                                 "Use Files class to check, read, delete, copy, move, manage metadata of a file or directory",
                                 "Use Stream API with NIO.2"]}],
                   
-                    "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
-                      "Be able to determine where variables go into and out of scope.",
-                      "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+                    "objectives":["Understand how to create and use Path objects.","Understand how to interact with Path objects using the Files API.","Be able to read and update file attributes using views.","Be able to read files using lambda expressions."],
                     "summary":["This chapter introduced the NIO.2 API for working with files and directories using the Path interface. For the exam, you need to know what the NIO.2 Path interface is and how it differs from the legacy java.io.File class. You should be familiar with how to create and use Path objects, including how to combine or resolve them with other Path objects.",
                         "We spent time reviewing various static methods available in the Files helper class. As discussed, the name of the function often tells you exactly what it does. We explained that most of these methods are capable of throwing an IOException and many take optional vararg enum values.",
                         "We also discussed how the NIO.2 API provides methods for reading and writing file metadata using views. Java uses views to retrieve all of the file system attributes for a file without numerous round-trips to the operating system. The NIO.2 API also includes support for operating system–specific file attributes, such as those found in Windows-, Mac-, and Linux-based file systems. For the exam, you should be familiar with the BasicFileAttributes and BasicFileAttributeView classes.",
@@ -274,9 +256,7 @@
                                 "Identify the components required to connect to a database using the DriverManager class including the JDBC URL",
                                 "Submit queries and read results from the database including creating statements, returning result sets, iterating through the results, and properly closing result sets, statements, andconnections"]}],
                   
-                    "objectives":["Be able to write code using a main() method.","Understand the effect of using packages and imports","Be able to identify legal and illegal declarations and initialization","Be able to recognize a constructor",
-                      "Be able to determine where variables go into and out of scope.",
-                      "Be able to recognize misplaced statements in a class.","Know how to identify when an object is eligible for garbage collection"],
+                    "objectives":["Name the core four JDBC interfaces that you need to know for the exam and where they are defined.","Identify correct and incorrect JDBC URLs.","Describe how to get a Connection using DriverManager.","Create a Statement using different options.","Choose which method on Statement to run given a SQL statement.","Loop through a forward only ResultSet.","Navigate within a scrollable ResultSet.","Identify when a resource should be closed."],
                     "summary":["There are four key SQL statements: SELECT reads data, INSERT creates a new row, UPDATE changes existing data, and DELETE removes existing data. On the exam, JDBC uses four key interfaces: Driver , Connection , Statement , and ResultSet . The interfaces are part of the Java API. A database-specifi c JAR fi le provides the implementations.",
                         "To connect to a database, you need the JDBC URL. A JDBC URL has three parts separated by colons. The fi rst part is jdbc . The second part is the name of the vendor/ product. The third part varies by database, but it includes the location and name of the database. The location is either localhost or an IP address followed by an optional port.",
                         "The DriverManager class provides a factory method called getConnection() to get a Connection implementation. Modern driver JARs contain a fi le in META-INF/servic e called java.sql.Driver . This is the name of the implementation class of Driver . Older JARs do not, and they require Class.forName() to load the driver.",

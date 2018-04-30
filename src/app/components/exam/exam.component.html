@@ -2,6 +2,9 @@
 <div class="jumbotron animated bounceInDown" id="jumb">
 <!--QUIZ MODE-->
   <div [hidden]="mode!=='test'">
+
+    {{testConfig | json}}
+
     <div class="d-flex">
       &nbsp;
       <div [hidden]="testConfig.timerOn==false" class="ml-auto p-1 h-25 btn btn-outline-dark btn-sm" ngbTooltip="resume timer" placement="top" id="resume"><i class="fa fa-play fa-xs"></i></div>
@@ -161,7 +164,7 @@
     <hr>
     <div class="row justify-content-between">
 
-      <div class="p-2 mb-auto"><div *ngIf="testConfig.timerOn"><h5>Elapsed time: </h5>{{getHours(elapsedTime)}}h {{getMinutes(elapsedTime)}}m {{getSeconds(elapsedTime)}}s <br> <h5> Time Limit:</h5> {{getHours(testConfig.duration)}}h {{getMinutes(testConfig.duration)}}m </div><h5>Required Score :</h5> 65%  <br>  <h5>Wrong Answers:</h5> {{pager.count-correctAnswers}}/{{pager.count}}   </div>
+      <div class="p-2 mb-auto"><div *ngIf="testConfig.timerOn"><h5>Elapsed time: </h5>{{getHours(elapsedTime)}}h {{getMinutes(elapsedTime)}}m {{getSeconds(elapsedTime)}}s <br> <h5> Time Limit:</h5> {{getHours(testConfig.duration)}}h {{getMinutes(testConfig.duration)}}m </div><h5>Required Score :</h5> {{test.requiredScore}} %  <br>  <h5>Wrong Answers:</h5> {{pager.count-correctAnswers}}/{{pager.count}}   </div>
       <div class="p-2 mb-auto" *ngIf="testResult==='Failed'"><circle-progress
         [showSubtitle] = false
         [backgroundPadding] = 10
@@ -233,7 +236,7 @@ modal content
     </button>
   </div>
   <div class="modal-body">
-    <div *ngIf="answeredQuestions< pager.count" class="alert alert-danger">You have questions that are not answered. If you continue, they will be considered as wrong questions.</div>
+    <div *ngIf="answeredQuestions < pager.count" class="alert alert-danger">You have questions that are not answered. If you continue, they will be considered as wrong questions.</div>
 <h5>Are you sure you want to end the exam ?</h5>  </div>
   <div class="modal-footer justify-content-center">
     <button type="button" class="btn btn-outline-success" (click)="endExam()" >Yes</button>

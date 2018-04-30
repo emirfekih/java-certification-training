@@ -7,6 +7,10 @@ import {
 import {FormControl} from "@angular/forms";
 import {ExamService} from "../../service/exam.service";
 import {Config} from "../../model/Config";
+import {Test} from "../../model/Test";
+import {ChapterService} from "../../service/chapter.service";
+import {ChapterDTO} from "../../model/ChapterDTO";
+
 
 @Component({
   selector: 'app-home',
@@ -19,23 +23,52 @@ export class HomeComponent implements OnInit {
   closeResult:string;
   time: NgbTimeStruct = {hour: 2, minute: 30, second: 0};
   testConfig:Config;
+  selectedTest:number;
+  chapters:ChapterDTO[];
+  selectedChapters:number[];
+  ocapDTO:any;
 
-  ocaDTO=[{id:1,testName:"Exam A"},{id:2,testName:"Exam A"},{id:3,testName:"Exam A"}]
 
 
-  constructor(private authService: AuthService,private modalService: NgbModal,config: NgbTimepickerConfig,private examService: ExamService) {
-    config.size = "small";
+  constructor(private authService: AuthService,private modalService: NgbModal,config: NgbTimepickerConfig
+              ,private examService: ExamService,private chapterService:ChapterService) {
+
+
+              config.size = "small";
   }
 
   ngOnInit() {
+    this.selectedChapters=[];
+    this.chapters=[];
+
     this.examService.currentMessage.subscribe(testConfig => this.testConfig = testConfig)
   }
 
+  changeTest(){
+    //loading test chapters every time a test is changed
+    this.chapterService.getTestChapters(this.selectedTest).subscribe(x=> this.chapters=x);
+  }
+
+  chooseTestType(typeValue){
+    if(typeValue=='OCA'){
+
+      this.examService.getTestByType('OCA').subscribe(x=> {this.ocapDTO=x;} )
+      }
+      else if(typeValue=='OCP'){
+      this.examService.getTestByType('OCP').subscribe(x=> {this.ocapDTO=x;} )
+
+
+    }
+
+
+  }
 
 
   configurateTest(){
     //BIND ALL TEST CONFIG HERE
     this.testConfig.duration= (this.time.hour *3600 + this.time.minute*60)
+    this.testConfig.testId=this.selectedTest;
+    this.testConfig.chapters=this.selectedChapters;
     //END BINDING
     this.examService.changeMessage(this.testConfig);
     this.modalReference.close();
@@ -59,14 +92,17 @@ export class HomeComponent implements OnInit {
   });
 
   openModal(content) {
-    this.modalReference=this.modalService.open(content,{size:'lg'})
+    //set a new configuration for exam
+    this.examService.changeMessage(new Config());
+
+    //open the modal
+    this.modalReference=this.modalService.open(content,{size:'lg'});
     this.modalReference.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
 
-    console.log("call web service");
   }
 
   private getDismissReason(reason: any): string {
