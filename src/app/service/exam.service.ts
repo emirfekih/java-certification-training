@@ -1,22 +1,30 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Test} from "../model/Test";
 import {Observable} from "rxjs/Observable";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Config} from "../model/Config";
 import {AuthService} from "./auth.service";
-import {RequestOptions} from "@angular/http";
-import {headersToString} from "selenium-webdriver/http";
 import {environment} from "../../environments/environment";
+import {catchError} from "rxjs/operators";
+import {UserTest} from "../model/UserTest";
+
+
+
+
 
 @Injectable()
 export class ExamService {
 
   private API_URL= environment.API_URL;
+  private httpOptions=environment.httpOptions;
 
 
   private messageSource = new BehaviorSubject<Config>(new Config());
   currentMessage = this.messageSource.asObservable();
+
+
+
 
   constructor(private http:HttpClient,private authService:AuthService) {
 
@@ -35,6 +43,11 @@ export class ExamService {
 
   changeMessage(configTest: Config) {
     this.messageSource.next(configTest)
+  }
+
+  addUserExam(data:any):Observable<any> {
+    return(this.http.post<any>(this.API_URL+'/addUserTest',data,this.httpOptions));
+
   }
 
 

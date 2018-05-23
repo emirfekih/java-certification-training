@@ -15,6 +15,9 @@ import {ChartModule} from 'primeng/components/chart/chart';
 import index from "@angular/cli/lib/cli";
 import {Config} from "../../model/Config";
 import {environment} from "../../../environments/environment";
+import {UserTest} from "../../model/UserTest";
+import {UserTestPK} from "../../model/UserTestPK";
+import {AuthService} from "../../service/auth.service";
 
 
 
@@ -46,6 +49,8 @@ export class ExamComponent implements OnInit {
   correctAnswers:number;
   closeResult:any;
   testConfig:Config = new Config();
+  userTest:UserTest;
+
 
   barChartOptions= {
     title: {
@@ -82,7 +87,7 @@ export class ExamComponent implements OnInit {
   this.subscription=this.myobs.subscribe(x => this.countDown--);
  */
 
-  constructor(private examService:ExamService,private modalService:NgbModal, private timerService:TimerService) { }
+  constructor(private examService:ExamService,private authService:AuthService,private modalService:NgbModal, private timerService:TimerService) { }
 
 
 
@@ -117,6 +122,24 @@ export class ExamComponent implements OnInit {
   }
 
 
+
+  submitExam(){
+    let userTestPk= new UserTestPK(1,this.test.testId);
+    let data={userTestPK:userTestPk,
+    elapsedTime: this.elapsedTime,
+    timeLimit: this.testConfig.duration,
+    testScore: 100,
+    nbCorrectAnswers: this.correctAnswers}
+
+    console.log(new Date().toISOString());
+
+    this.userTest=new UserTest(data);
+    this.examService.addUserExam(this.userTest).subscribe(()=> console.log("Added user test"))
+
+  }
+
+
+
   endExam(){
     this.mode='ended';
     this.testResult=this.getTestResult(this.test.requiredScore);
@@ -146,20 +169,39 @@ export class ExamComponent implements OnInit {
 
 
   loadTest(){
-    this.examService.getExam(this.API_URL+"/test/1").subscribe(data => {this.test=new Test(data);
-    this.pager.count=this.test.questions.length;
-    if (this.test.questions){
-      this.filtered=this.test.questions.slice(this.pager.index, this.pager.index + this.pager.size)}
-     else {this.filtered=[];}
-    });
 
-    //launch timer if enabled in config
-    if(this.testConfig.timerOn){
-      this.countDown=this.testConfig.duration;
-      this.timerService.getTimer(this.countDown).subscribe(x=> this.countDown=x);
+    if(this.authService.isLoggedIn()){
+      let url=this.API_URL+"/getTest/"+this.buildReqParams();
+      console.log(url);
+      this.examService.getExam(url).subscribe(data => {this.test=new Test(data);
+        this.pager.count=this.test.questions.length;
+        if (this.test.questions){
+          this.filtered=this.test.questions.slice(this.pager.index, this.pager.index + this.pager.size)}
+        else {this.filtered=[];}
+      });
+
+      //launch timer if enabled in config
+      if(this.testConfig.timerOn){
+        this.countDown=this.testConfig.duration;
+        this.timerService.getTimer(this.countDown).subscribe(x=> this.countDown=x);
+    }
+
+    }
+    else if(!this.authService.isLoggedIn()){
+      this.examService.getExam(this.API_URL+"/freeTest/1").subscribe(data => {this.test=new Test(data);
+        this.pager.count=this.test.questions.length;
+        if (this.test.questions){
+          this.filtered=this.test.questions.slice(this.pager.index, this.pager.index + this.pager.size)}
+        else {this.filtered=[];}
+      });
+
     }
 
 
+
+
+  }
+  postExam(){
 
   }
 
@@ -219,10 +261,14 @@ export class ExamComponent implements OnInit {
 
     let reqChapters='';
     this.testConfig.chapters.forEach(x=> reqChapters=reqChapters+x+',');
-    let reqParams='?testId='+this.testConfig.testId+'&questionRange='+this.testConfig.questionRange+
-      '&firstQuestion='+this.testConfig.firstQuestion+'&lastQuuestion='+this.testConfig.lastQuestion+'&timerOn='+
-      this.testConfig.timerOn+'&duration='+this.testConfig.duration+'&shuffleOptions='+this.testConfig.shuffleOptions+
-      '&takeOnlyChapters='+this.testConfig.takeOnlyChapters+'&chapters='+reqChapters.slice(0,reqChapters.length-1);
+    let reqParams=this.testConfig.testId+
+      '?shuffleOptions='+this.testConfig.shuffleOptions+
+      '&questionRange='+this.testConfig.questionRange+
+      '&firstQuestion='+this.testConfig.firstQuestion+
+      '&lastQuestion='+this.testConfig.lastQuestion+
+      '&takeOnlyChapters='+this.testConfig.takeOnlyChapters+
+      '&chapters='+
+      reqChapters.slice(0,reqChapters.length-1);
 
     return reqParams
 

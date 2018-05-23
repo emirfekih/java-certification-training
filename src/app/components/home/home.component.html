@@ -54,6 +54,7 @@
 
 
         <!--TIMER INPUT-->
+
         <div class="form-group row">
           <div class="form-check col-md-3">
             <input type="checkbox" id="timerCheck" [(ngModel)]="testConfig.timerOn">
@@ -76,18 +77,27 @@
 
       <!--TEST TYPE SELECT INPUT-->
         <div class="form-group row">
-          <div class="form-check form-check-inline">
-            &nbsp;&nbsp;&nbsp;&nbsp;Test Type : &nbsp;<br>
-            <label class="form-check-label">
-              <input (click)="chooseTestType('OCA')" class="form-check-input" type="radio" name="inlineRadioOptions" id="OCA" value="OCA"> OCA
-            </label>
+          <div class="form-control">
+
+
+            <div class="form-check form-check-inline">
+              &nbsp;&nbsp;&nbsp;&nbsp;Test Type : &nbsp;<br>
+
+              <label class="form-check-label">
+                <input (click)="chooseTestType('OCA')" required  class="form-check-input" type="radio" name="inlineRadioOptions" id="OCA" value="OCA"> OCA
+              </label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input (click)="chooseTestType('OCP')" required  class="form-check-input" type="radio" name="inlineRadioOptions" id="OCP" value="OCP"> OCP
+              </label>
+            </div>
+
           </div>
 
-          <div class="form-check form-check-inline">
-            <label class="form-check-label">
-              <input (click)="chooseTestType('OCP')" class="form-check-input" type="radio" name="inlineRadioOptions" id="OCP" value="OCP"> OCP
-            </label>
-          </div>
+          <!--<span *ngIf="testType.touched && testType.invalid">TYPE is required</span>-->
+
 
         </div>
 

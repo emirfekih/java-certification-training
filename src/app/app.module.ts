@@ -54,6 +54,7 @@ import {TokenInterceptor} from "./service/token.interceptor";
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     ReactiveFormsModule,
     NgbModule,

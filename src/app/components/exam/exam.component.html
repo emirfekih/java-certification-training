@@ -1,9 +1,11 @@
 
+
 <div class="jumbotron animated bounceInDown" id="jumb">
+  <div *ngIf="!test.questions" class="alert alert-warning">Error loading test, please try again.</div>
 <!--QUIZ MODE-->
   <div [hidden]="mode!=='test'">
 
-    {{testConfig | json}}
+    <!--{{testConfig | json}}-->
 
     <div class="d-flex">
       &nbsp;
@@ -24,6 +26,8 @@
 
       <div class="p-1 h-25 btn btn-outline-secondary btn-sm" (click)="showAnswer(question)"> Show answer</div>
 
+      <div class="p-1 h-25 ml-auto"><h6><span class="badge badge-secondary">Chapter</span> {{question.chapter.chapterName}} </h6></div>
+
 
 
 
@@ -33,19 +37,24 @@
 
     <hr>
 
-    <div class="row ">
+    <div *ngIf="question.questionHeader" class="row ">
       <div class="col-md-12"><h5>
         {{question.questionHeader}}
         <br>
       </h5>
       </div>
     </div>
-    <div class="row ">
-      <div class="col-md-12">
-        <pre><code>{{question.questionCode}}</code></pre>
+
+    <div *ngIf="question.questionCode" class="row ">
+      <div class="card card-block bg-light ">
+        <div class="col-md-12">
+          <pre><code>{{question.questionCode}}</code></pre>
+        </div>
       </div>
+
     </div>
-    <div class="row ">
+
+    <div *ngIf="question.questionStatement" class="row mt-1">
       <div class="col-md-12"><h5>
         {{question.questionStatement}}
         <br>
@@ -55,7 +64,7 @@
     <!--
        MULTIPLE SELECT QUESTIONS
        -->
-    <div class="row" *ngIf=" question.questionType === 2   ">
+    <div class="row mt-1" *ngIf=" question.questionType === 2   ">
       <div class="col-md-12">
         <div class="custom-control custom-checkbox " *ngFor="let choice of question.choices">
 
@@ -71,7 +80,7 @@
     <!--
        RADIO QUESTIONS
        -->
-    <div class="row" *ngIf=" question.questionType === 1   ">
+    <div class="row mt-1" *ngIf=" question.questionType === 1   ">
       <div class="col-md-8">
         <div class="custom-control custom-radio" *ngFor="let choice of question.choices ; let rindex = index">
           <input type="radio" [attr.id]="'customRadio1'+choice.choiceId" name="customRadio" class="custom-control-input" [checked]="choice.selected" [value]="choice.selected" (change)="onSelectionChange(question,choice)">
@@ -81,7 +90,10 @@
       <div class="col-md-8 "></div>
     </div>
 
-
+<div *ngIf="question.questionExplanation && question.showAnswer" class="row mt-1"><div class="alert alert-warning" role="alert">
+  Tip : {{question.questionExplanation}}
+</div>
+  </div>
 
     <hr>
 
@@ -118,7 +130,7 @@
 <!--REVIEW MODE-->
 <div [hidden]="mode!=='review'">
   <div class="d-flex">
-    <div class="p-1 "><h4>{{test.testType}} Test : {{test.testName}}</h4></div>
+    <div class="p-1 "><h4>{{test.testType}} Review test : {{test.testName}}</h4></div>
 
   </div>
 
@@ -155,6 +167,8 @@
 
 
 <!--RESULT MODE -->
+
+  {{this.userTest | json}}
   <div *ngIf="mode==='ended'">
     <div class="row justify-content-between">
       <div class="col-md-4"> <h4>{{test.testType}} {{test.testName}} result : </h4> </div>
@@ -204,7 +218,7 @@
       </div>
     </div>
 
-    <div class="btn btn-outline-success font-weight-bold" >Submit</div>
+    <div *ngIf="authService.isLoggedIn()" class="btn btn-outline-success font-weight-bold" (click)="submitExam()" >Submit</div>
 
 
 
@@ -224,9 +238,8 @@ PROGRESS BAR
 
 
 
-<!--
-modal content
--->
+
+<!--modal content-->
 
 <ng-template #endConfirmation let-c="close" let-d="dismiss">
   <div class="modal-header">
