@@ -25,6 +25,8 @@ import {NgCircleProgressModule} from "ng-circle-progress";
 import {ChartModule} from 'primeng/components/chart/chart';
 
 import {TokenInterceptor} from "./service/token.interceptor";
+import { ExamhistoryComponent } from './examhistory/examhistory.component';
+import {ExamhistoryService} from "./service/examhistory.service";
 
 
 
@@ -42,6 +44,7 @@ import {TokenInterceptor} from "./service/token.interceptor";
     ExamComponent,
     SignUpComponent,
     ResultComponent,
+    ExamhistoryComponent,
 
 
 
@@ -62,7 +65,7 @@ import {TokenInterceptor} from "./service/token.interceptor";
     ChartModule
   ],
   providers: [
-    ChapterService,ExamService,AuthService,RegisterService,TimerService,
+    ChapterService,ExamService,AuthService,RegisterService,TimerService,ExamhistoryService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,

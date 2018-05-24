@@ -1,0 +1,32 @@
+<div class="jumbotron" id="jumb" >
+<h4>{{data.username}} Exam History</h4>
+  <table class="table">
+    <thead class="bg-secondary">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Test Name</th>
+      <th scope="col">Test Type</th>
+      <th scope="col">Your Score</th>
+      <th scope="col">Required Score</th>
+      <th scope="col">Date</th>
+      <th scope="col">Test Duration</th>
+      <th scope="col">Result</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let userTest of data.user_tests ;let i=index ">
+      <th scope="row">{{i+1}}</th>
+      <td>{{userTest.test.testName}}</td>
+      <td>{{userTest.test.testType}}</td>
+      <td>{{userTest.testScore}} %</td>
+      <td>{{userTest.test.requiredScore}} %</td>
+      <td>{{toISODate(userTest.userTestPK.testDate)[0]}} | {{toISODate(userTest.userTestPK.testDate)[1].split('.')[0]}}</td>
+      <td>{{getHours(userTest.elapsedTime)}}:{{getMinutes(userTest.elapsedTime)}}:{{getSeconds(userTest.elapsedTime)}}</td>
+      <td *ngIf="userTest.testScore>=userTest.test.requiredScore"><i id="checkStyle" class="fa fa-check" aria-hidden="true"></i></td>
+      <td *ngIf="userTest.testScore<userTest.test.requiredScore"><i id="crossStyle" class="fa fa-times" aria-hidden="true"></i></td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>

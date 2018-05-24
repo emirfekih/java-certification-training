@@ -128,11 +128,8 @@ export class ExamComponent implements OnInit {
     let data={userTestPK:userTestPk,
     elapsedTime: this.elapsedTime,
     timeLimit: this.testConfig.duration,
-    testScore: 100,
+    testScore: this.progressScore,
     nbCorrectAnswers: this.correctAnswers}
-
-    console.log(new Date().toISOString());
-
     this.userTest=new UserTest(data);
     this.examService.addUserExam(this.userTest).subscribe(()=> console.log("Added user test"))
 

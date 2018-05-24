@@ -9,6 +9,7 @@ import {OcpComponent} from "./components/ocp/ocp.component";
 import {ExamComponent} from "./components/exam/exam.component";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgCircleProgressModule} from "ng-circle-progress";
+import {ExamhistoryComponent} from "./examhistory/examhistory.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent  },
@@ -18,7 +19,9 @@ const routes: Routes = [
   {path:'ocp',component:OcpComponent},
   {path:'exam',component:ExamComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'signup', component:SignUpComponent }
+  { path: 'signup', component:SignUpComponent },
+  { path: 'examhistory', component:ExamhistoryComponent }
+
 
 ];
 

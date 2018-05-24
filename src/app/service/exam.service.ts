@@ -49,7 +49,9 @@ export class ExamService {
     return(this.http.post<any>(this.API_URL+'/addUserTest',data,this.httpOptions));
 
   }
-
+  getCurrentUser(){
+    return this.http.get(this.API_URL+'/user');
+  }
 
 
 }

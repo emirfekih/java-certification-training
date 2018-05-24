@@ -47,7 +47,8 @@
 
           <div class="tab-pane fade" [attr.id]="'summary'+chapter.chapterId">
             <p *ngFor="let paragraphe of chapter.summary">{{paragraphe}}</p>
-            <a class="btn  btn-outline-primary btn-lg btn-round" (click)="pass(chapter)" role="button"><i class="fa fa-question" aria-hidden="true"></i> Review Chapter {{chapter.chapterId}}</a>
+            <a class="btn  btn-outline-primary btn-lg btn-round" (click)="openModal(configTest,chapter)" role="button"><i class="fa fa-question" aria-hidden="true"></i> Review Chapter {{chapter.chapterId}}</a>
+
           </div>
         </div>
       </div>
@@ -60,6 +61,29 @@
 
 
 </div>
+
+
+
+<ng-template #configTest let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h6 class="modal-title">Test Configuration</h6>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div *ngIf="!authService.isLoggedIn()" class="alert alert-warning" ><a rou></a>Login to access the test of this chapter </div>
+    <div *ngIf="authService.isLoggedIn()" class="alert alert-info" > The test will begin directly after your confirmation</div>
+
+  </div>
+  <div class="modal-footer justify-content-center">
+
+    <button type="button" class="btn btn-outline-success"(click)="beginTest()" [disabled]="!authService.isLoggedIn()" routerLink="/exam">
+      Begin Test</button>
+    <button type="button" class="btn btn-outline-danger" (click)="c('Close click')">Back</button>
+  </div>
+
+</ng-template>
 
 
 

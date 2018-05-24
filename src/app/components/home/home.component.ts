@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
     this.selectedChapters=[];
     this.chapters=[];
 
-    this.examService.currentMessage.subscribe(testConfig => this.testConfig = testConfig)
+    this.examService.currentMessage.subscribe(testConfig => this.testConfig = testConfig);
   }
 
   changeTest(){
