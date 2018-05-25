@@ -30,13 +30,13 @@ export class ExamService {
 
   }
 
-  getExam(examUrl:string){
+  getExam(examUrl:string):Observable<Test>{
 
     return(this.http.get<Test>(examUrl));
 
   }
 
-  getTestByType(type:string){
+  getTestByType(type:string):Observable<Test[]>{
     return(this.http.get<Test[]>(this.API_URL+'/test?testType='+type));
   }
 
@@ -49,9 +49,14 @@ export class ExamService {
     return(this.http.post<any>(this.API_URL+'/addUserTest',data,this.httpOptions));
 
   }
-  getCurrentUser(){
+  getCurrentUser():Observable<any>{
     return this.http.get(this.API_URL+'/user');
   }
+  getCurrentUserId():Observable<number>{
+    return this.http.get<number>(this.API_URL+'/userId');
+  }
+
+
 
 
 }

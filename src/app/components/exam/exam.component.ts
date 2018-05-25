@@ -18,6 +18,7 @@ import {environment} from "../../../environments/environment";
 import {UserTest} from "../../model/UserTest";
 import {UserTestPK} from "../../model/UserTestPK";
 import {AuthService} from "../../service/auth.service";
+import {Router} from "@angular/router";
 
 
 
@@ -50,6 +51,7 @@ export class ExamComponent implements OnInit {
   closeResult:any;
   testConfig:Config = new Config();
   userTest:UserTest;
+  userId:number;
 
 
   barChartOptions= {
@@ -87,7 +89,12 @@ export class ExamComponent implements OnInit {
   this.subscription=this.myobs.subscribe(x => this.countDown--);
  */
 
-  constructor(private examService:ExamService,private authService:AuthService,private modalService:NgbModal, private timerService:TimerService) { }
+  constructor(private examService:ExamService,
+              private authService:AuthService,
+              private modalService:NgbModal,
+              private timerService:TimerService,
+              private router: Router
+  ) { }
 
 
 
@@ -96,6 +103,10 @@ export class ExamComponent implements OnInit {
     this.mode='test';
     this.examService.currentMessage.subscribe(testConfig=> this.testConfig=testConfig);
     this.loadTest();
+
+    this.examService.getCurrentUserId().subscribe(x=> this.userId=x);
+
+
 
 
     this.barData = {
@@ -124,14 +135,16 @@ export class ExamComponent implements OnInit {
 
 
   submitExam(){
-    let userTestPk= new UserTestPK(1,this.test.testId);
+    let userTestPk= new UserTestPK(this.userId,this.test.testId);
     let data={userTestPK:userTestPk,
     elapsedTime: this.elapsedTime,
     timeLimit: this.testConfig.duration,
-    testScore: this.progressScore,
+    testScore: parseInt(this.progressScore),
     nbCorrectAnswers: this.correctAnswers}
     this.userTest=new UserTest(data);
-    this.examService.addUserExam(this.userTest).subscribe(()=> console.log("Added user test"))
+    this.examService.addUserExam(this.userTest).subscribe(()=> {console.log("Added user test");setTimeout(()=> {
+      this.router.navigate(['/examhistory']);
+    },1000);})
 
   }
 
@@ -160,6 +173,7 @@ export class ExamComponent implements OnInit {
 
     this.barData.datasets[0].data=correctPerChapter;
     this.barData.datasets[1].data=wrongPerChapter;
+   // this.examService.getCurrentUser().subscribe(user=> {this.user=user;console.log(user);console.log(this.user.user_tests[0].userTestPK.userId)})
    this.modalReference.close();
   }
 
@@ -198,9 +212,7 @@ export class ExamComponent implements OnInit {
 
 
   }
-  postExam(){
 
-  }
 
   countCorrectAnswers(test:Test){ let i =0;
     this.test.questions.forEach(x=> {if(this.isCorrect(x)){i++}});

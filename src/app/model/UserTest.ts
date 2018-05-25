@@ -1,4 +1,5 @@
 import {UserTestPK} from "./UserTestPK";
+import {Test} from "./Test";
 
 export class UserTest {
   userTestPK: UserTestPK;
@@ -7,7 +8,7 @@ export class UserTest {
   timeLimit: number;
   testScore: number;
   nbCorrectAnswers: number;
-
+test:Test;
 //nbTotalQuestions;
   constructor(data: any) {
     this.userTestPK = data.userTestPK;

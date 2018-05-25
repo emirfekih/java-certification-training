@@ -14,6 +14,8 @@ export class ExamhistoryComponent implements OnInit {
 
   private API_URL= environment.API_URL;
 data:any;
+userTests:UserTest[];
+userName:string;
 
 
 
@@ -21,13 +23,10 @@ data:any;
   constructor(private examHistory:ExamhistoryService,private examService:ExamService) { }
 
   ngOnInit() {
-    this.examService.getCurrentUser().subscribe(x=> this.data=x);
 
+    this.examService.getCurrentUser().subscribe(x => this.userName = x.username);
 
-
-
-
-    var timestamp = new Date(1527087626000).toISOString();
+    this.examHistory.getCurrentUserTests().subscribe(x=>this.userTests=x)
 
   }
 

@@ -11,7 +11,8 @@ import { RegisterService } from '../../service/register.service';
 })
 export class SignUpComponent {
   passed: boolean;
-  pwdPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{4,50}$";
+//  pwdPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{4,50}$";
+pwdPattern = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).{6,12}$"
   form = new FormGroup({
     firstname: new FormControl('',[
       Validators.required,
@@ -74,7 +75,7 @@ export class SignUpComponent {
     data["lastPasswordResetDate"]= formatDate;
     this.registerService.signUp(data)
       .subscribe(response => {
-        if(response) 
+        if(response)
         {
           this.passed= true;
           setTimeout(()=> {
@@ -84,5 +85,5 @@ export class SignUpComponent {
       },);
   }
 
-    
+
 }

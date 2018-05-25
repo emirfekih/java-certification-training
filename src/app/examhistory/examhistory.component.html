@@ -1,5 +1,5 @@
 <div class="jumbotron" id="jumb" >
-<h4>{{data.username}} Exam History</h4>
+<h4>{{userName}} Exam History</h4>
   <table class="table">
     <thead class="bg-secondary">
     <tr>
@@ -15,7 +15,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let userTest of data.user_tests ;let i=index ">
+    <tr *ngFor="let userTest of userTests ;let i=index ">
       <th scope="row">{{i+1}}</th>
       <td>{{userTest.test.testName}}</td>
       <td>{{userTest.test.testType}}</td>
